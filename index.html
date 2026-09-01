@@ -1,0 +1,453 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Roku at AAFES — MSS Channel Dashboard</title>
+<meta name="description" content="52-week AAFES review of Roku, Amazon Fire TV and Google — streaming players, licensed TV operating systems, small-screen TV sizing and channel mix.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+<style>
+:root{
+  color-scheme: light;
+  --ground:#FBFAFD; --panel:#FFFFFF; --panel-2:#F5F2FB;
+  --ink:#17141F; --ink-2:#4A4458; --ink-3:#7A7389;
+  --rule:#E4DFF0; --rule-2:#EFEBF7;
+  --roku:#6E1EFF; --roku-soft:#F1E9FF; --roku-ink:#4A0FCC;
+  --s-roku:#6E1EFF; --s-amzn:#EB6834; --s-goog:#1BAF7A;
+  --b1:#2a78d6;--b2:#eb6834;--b3:#1baf7a;--b4:#eda100;--b5:#e87ba4;--b6:#008300;--b7:#4a3aa7;--b8:#e34948;
+  --pos:#006300; --neg:#C0392B; --warnbg:#FDF6E3;
+  --grid:#EDE9F5; --axis:#CFC8DF;
+  --shadow:0 1px 2px rgba(23,20,31,.05), 0 8px 24px -12px rgba(23,20,31,.12);
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    color-scheme: dark;
+    --ground:#14121A; --panel:#1C1926; --panel-2:#232030;
+    --ink:#F5F2FA; --ink-2:#C0B9D0; --ink-3:#8F87A3;
+    --rule:#302B40; --rule-2:#272235;
+    --roku:#9B7BFF; --roku-soft:#241B3D; --roku-ink:#B79BFF;
+    --s-roku:#8B5CF6; --s-amzn:#D95926; --s-goog:#199E70;
+    --b1:#3987e5;--b2:#d95926;--b3:#199e70;--b4:#c98500;--b5:#d55181;--b6:#008300;--b7:#9085e9;--b8:#e66767;
+    --pos:#0ca30c; --neg:#E66767; --warnbg:#2A2416;
+    --grid:#282334; --axis:#3B3550;
+    --shadow:0 1px 2px rgba(0,0,0,.4), 0 8px 24px -12px rgba(0,0,0,.6);
+  }
+}
+:root[data-theme="dark"]{
+  color-scheme: dark;
+  --ground:#14121A; --panel:#1C1926; --panel-2:#232030;
+  --ink:#F5F2FA; --ink-2:#C0B9D0; --ink-3:#8F87A3;
+  --rule:#302B40; --rule-2:#272235;
+  --roku:#9B7BFF; --roku-soft:#241B3D; --roku-ink:#B79BFF;
+  --s-roku:#8B5CF6; --s-amzn:#D95926; --s-goog:#199E70;
+  --b1:#3987e5;--b2:#d95926;--b3:#199e70;--b4:#c98500;--b5:#d55181;--b6:#008300;--b7:#9085e9;--b8:#e66767;
+  --pos:#0ca30c; --neg:#E66767; --warnbg:#2A2416;
+  --grid:#282334; --axis:#3B3550;
+  --shadow:0 1px 2px rgba(0,0,0,.4), 0 8px 24px -12px rgba(0,0,0,.6);
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--ground);color:var(--ink);
+  font-family:"IBM Plex Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
+  font-size:15px;line-height:1.6;-webkit-font-smoothing:antialiased}
+h1,h2,h3,h4,.disp{font-family:"Archivo","IBM Plex Sans",system-ui,sans-serif;text-wrap:balance}
+.wrap{max-width:1120px;margin:0 auto;padding:0 24px}
+a{color:var(--roku-ink)}
+/* masthead */
+.mast{background:var(--roku);color:#fff;padding:44px 0 40px;position:relative;overflow:hidden}
+.mast:after{content:"";position:absolute;right:-90px;top:-90px;width:340px;height:340px;border-radius:50%;
+  background:radial-gradient(circle at 32% 32%, rgba(255,255,255,.20), rgba(255,255,255,0) 62%)}
+.mast .wrap{position:relative;z-index:1}
+.brandrow{display:flex;align-items:center;gap:14px;margin-bottom:26px;flex-wrap:wrap}
+.rokumark{font-family:"Archivo",sans-serif;font-weight:700;font-size:15px;letter-spacing:.14em;
+  background:#fff;color:var(--roku);padding:5px 13px;border-radius:5px}
+.mastmeta{font-size:12px;letter-spacing:.13em;text-transform:uppercase;color:rgba(255,255,255,.82);font-weight:500}
+.mast h1{font-size:clamp(30px,4.6vw,50px);line-height:1.06;font-weight:700;margin:0 0 14px;letter-spacing:-.022em}
+.mast .sub{font-size:17px;color:rgba(255,255,255,.9);max-width:66ch;margin:0}
+.mast .stamp{margin-top:26px;font-size:12.5px;color:rgba(255,255,255,.78);
+  border-top:1px solid rgba(255,255,255,.24);padding-top:14px;display:flex;gap:22px;flex-wrap:wrap}
+/* sections */
+section{padding:52px 0;border-bottom:1px solid var(--rule-2)}
+section:last-of-type{border-bottom:0}
+.eyebrow{font-size:11.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--roku-ink);
+  font-weight:600;margin:0 0 10px;font-family:"Archivo",sans-serif}
+h2{font-size:clamp(23px,2.7vw,31px);font-weight:600;margin:0 0 12px;letter-spacing:-.018em}
+h3{font-size:17.5px;font-weight:600;margin:34px 0 12px;letter-spacing:-.01em}
+p{margin:0 0 15px;max-width:74ch}
+.lede{font-size:17px;color:var(--ink-2);max-width:70ch}
+/* finding blocks */
+.findings{display:grid;gap:14px;margin:26px 0 0}
+.finding{background:var(--panel);border:1px solid var(--rule);border-radius:11px;padding:19px 22px;
+  display:grid;grid-template-columns:auto 1fr;gap:18px;align-items:start;box-shadow:var(--shadow)}
+.fnum{font-family:"Archivo",sans-serif;font-weight:700;font-size:13px;color:#fff;background:var(--roku);
+  width:27px;height:27px;border-radius:7px;display:grid;place-items:center;margin-top:2px}
+.finding h4{margin:0 0 5px;font-size:16.5px;font-weight:600;letter-spacing:-.01em}
+.finding p{margin:0;font-size:14.5px;color:var(--ink-2);max-width:none}
+/* stat tiles */
+.tiles{display:grid;grid-template-columns:repeat(auto-fit,minmax(178px,1fr));gap:13px;margin:24px 0}
+.tile{background:var(--panel);border:1px solid var(--rule);border-radius:11px;padding:17px 19px;box-shadow:var(--shadow)}
+.tile .k{font-size:11.5px;letter-spacing:.09em;text-transform:uppercase;color:var(--ink-3);font-weight:600;margin-bottom:7px}
+.tile .v{font-family:"Archivo",sans-serif;font-size:29px;font-weight:700;letter-spacing:-.025em;line-height:1.05}
+.tile .d{font-size:13px;margin-top:5px;color:var(--ink-2);font-variant-numeric:tabular-nums}
+.tile.accent{border-color:var(--roku);background:var(--roku-soft)}
+.up{color:var(--pos);font-weight:600}.down{color:var(--neg);font-weight:600}
+.swatch{display:inline-block;width:9px;height:9px;border-radius:2.5px;margin-right:7px;vertical-align:baseline}
+/* tables */
+.tblwrap{overflow-x:auto;margin:20px 0;border:1px solid var(--rule);border-radius:11px;background:var(--panel);box-shadow:var(--shadow)}
+table{border-collapse:collapse;width:100%;font-size:13.5px;min-width:600px}
+th,td{padding:10px 14px;text-align:right;border-bottom:1px solid var(--rule-2);white-space:nowrap}
+th:first-child,td:first-child{text-align:left;white-space:normal}
+thead th{font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-3);font-weight:600;
+  background:var(--panel-2);border-bottom:1px solid var(--rule);position:sticky;top:0}
+tbody tr:last-child td{border-bottom:0}
+tbody tr:hover td{background:var(--panel-2)}
+td.num,th.num{font-variant-numeric:tabular-nums}
+tr.total td{font-weight:600;background:var(--panel-2);border-top:2px solid var(--rule)}
+tr.hi td{background:var(--roku-soft)}
+tr.hi td:first-child{box-shadow:inset 3px 0 0 var(--roku)}
+/* charts */
+figure{margin:24px 0;background:var(--panel);border:1px solid var(--rule);border-radius:11px;padding:20px 22px 16px;box-shadow:var(--shadow)}
+figcaption{font-size:13px;color:var(--ink-3);margin-top:12px;padding-top:11px;border-top:1px solid var(--rule-2)}
+.chtitle{font-family:"Archivo",sans-serif;font-size:15.5px;font-weight:600;margin:0 0 3px;letter-spacing:-.01em}
+.chsub{font-size:13px;color:var(--ink-3);margin:0 0 15px}
+.legend{display:flex;gap:17px;flex-wrap:wrap;font-size:12.5px;color:var(--ink-2);margin:0 0 13px;font-weight:500}
+.legend span{display:inline-flex;align-items:center}
+svg{display:block;width:100%;height:auto;overflow:visible}
+.gl{stroke:var(--grid);stroke-width:1}
+.ax{stroke:var(--axis);stroke-width:1}
+.tk{font-size:11px;fill:var(--ink-3);font-variant-numeric:tabular-nums}
+.dlabel{font-size:11.5px;font-weight:600;font-variant-numeric:tabular-nums}
+.hoverzone{fill:transparent;cursor:crosshair}
+.tip{position:absolute;pointer-events:none;background:var(--panel);border:1px solid var(--rule);
+  border-radius:8px;padding:9px 12px;font-size:12.5px;box-shadow:var(--shadow);opacity:0;transition:opacity .1s;z-index:40;min-width:130px}
+.tip .tt{font-weight:600;margin-bottom:5px;font-size:12px;color:var(--ink)}
+.tip .tr{display:flex;justify-content:space-between;gap:16px;color:var(--ink-2);font-variant-numeric:tabular-nums}
+.tip .tr b{color:var(--ink);font-weight:600}
+.chartbox{position:relative}
+/* callout */
+.callout{border-left:3px solid var(--roku);background:var(--roku-soft);padding:16px 20px;border-radius:0 9px 9px 0;margin:22px 0}
+.callout p{margin:0;font-size:14.5px;color:var(--ink-2)}
+.callout strong{color:var(--ink)}
+.caution{border-left:3px solid #C8891B;background:var(--warnbg);padding:16px 20px;border-radius:0 9px 9px 0;margin:22px 0}
+.caution p{margin:0;font-size:14.5px;color:var(--ink-2)}
+/* methodology */
+.method{font-size:13.5px;color:var(--ink-2)}
+.method dt{font-weight:600;color:var(--ink);margin-top:13px;font-size:13.5px}
+.method dd{margin:3px 0 0;padding-left:0}
+footer{padding:34px 0 46px;color:var(--ink-3);font-size:12.5px}
+footer .wrap{border-top:1px solid var(--rule);padding-top:20px}
+@media (max-width:640px){
+  .finding{grid-template-columns:1fr;gap:10px}
+  section{padding:38px 0}
+}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+:focus-visible{outline:2px solid var(--roku);outline-offset:2px;border-radius:3px}
+</style>
+<style>
+.topbar{position:sticky;top:0;z-index:30;background:var(--panel);border-bottom:1px solid var(--rule);
+  backdrop-filter:saturate(160%) blur(6px)}
+.topbar .wrap{display:flex;align-items:center;gap:18px;min-height:56px;flex-wrap:wrap}
+.tb-brand{display:flex;align-items:center;gap:10px;font-family:"Archivo",sans-serif;font-weight:700;
+  font-size:12.5px;letter-spacing:.1em;color:var(--ink)}
+.tb-chip{background:var(--roku);color:#fff;padding:3px 9px;border-radius:4px;font-size:11.5px;letter-spacing:.12em}
+nav.tabs{display:flex;gap:2px;overflow-x:auto;margin-left:auto;scrollbar-width:none}
+nav.tabs::-webkit-scrollbar{display:none}
+nav.tabs button{appearance:none;border:0;background:transparent;font-family:"IBM Plex Sans",sans-serif;
+  font-size:13.5px;font-weight:500;color:var(--ink-3);padding:9px 13px;border-radius:7px;cursor:pointer;
+  white-space:nowrap;transition:background .12s,color .12s}
+nav.tabs button:hover{color:var(--ink);background:var(--panel-2)}
+nav.tabs button[aria-selected="true"]{color:var(--roku-ink);background:var(--roku-soft);font-weight:600}
+.panel[hidden]{display:none!important}
+.panel > section{border-bottom:0}
+.sitehead{background:var(--roku);color:#fff;padding:30px 0 28px;position:relative;overflow:hidden}
+.sitehead:after{content:"";position:absolute;right:-80px;top:-120px;width:320px;height:320px;border-radius:50%;
+  background:radial-gradient(circle at 32% 32%, rgba(255,255,255,.20), rgba(255,255,255,0) 62%)}
+.sitehead .wrap{position:relative;z-index:1}
+.sitehead h1{font-size:clamp(24px,3.4vw,34px);font-weight:700;margin:0 0 8px;letter-spacing:-.02em}
+.sitehead p{color:rgba(255,255,255,.9);margin:0;max-width:72ch;font-size:15px}
+.sitehead .meta{margin-top:16px;padding-top:12px;border-top:1px solid rgba(255,255,255,.24);
+  display:flex;gap:20px;flex-wrap:wrap;font-size:12px;color:rgba(255,255,255,.8)}
+.sitefoot{padding:26px 0 40px;color:var(--ink-3);font-size:12.5px}
+.sitefoot .wrap{border-top:1px solid var(--rule);padding-top:18px}
+@media print{.topbar{position:static}.panel[hidden]{display:block!important}}
+</style>
+</head>
+<body>
+<header class="sitehead"><div class="wrap">
+<div style="display:flex;align-items:center;gap:12px;margin-bottom:14px">
+<span style="background:#fff;color:var(--roku);font-family:Archivo,sans-serif;font-weight:700;font-size:13px;letter-spacing:.14em;padding:4px 11px;border-radius:5px">ROKU</span>
+<span style="font-size:11.5px;letter-spacing:.13em;text-transform:uppercase;color:rgba(255,255,255,.82);font-weight:500">&times;&nbsp; Military Sales &amp; Service</span></div>
+<h1>AAFES Channel Dashboard</h1>
+<p>Roku, Amazon Fire TV and Google across the AAFES exchange — streaming players, licensed TV operating systems, small-screen sizing and channel mix.</p>
+<div class="meta"><span>Dept 1097 &middot; TV / Video</span><span>Rolling 52 weeks &middot; W/E 2025-09-06 &ndash; 2026-08-29</span><span>Data as of 1 September 2026</span></div>
+</div></header>
+<div class="topbar"><div class="wrap">
+<span class="tb-brand"><span class="tb-chip">ROKU</span> AAFES</span>
+<nav class="tabs" role="tablist"><button role="tab" id="tab-overview" aria-controls="panel-overview" aria-selected="true" data-tab="overview">Overview</button><button role="tab" id="tab-players" aria-controls="panel-players" aria-selected="false" data-tab="players">Streaming players</button><button role="tab" id="tab-os" aria-controls="panel-os" aria-selected="false" data-tab="os">TV operating systems</button><button role="tab" id="tab-small" aria-controls="panel-small" aria-selected="false" data-tab="small">Small screen</button><button role="tab" id="tab-channel" aria-controls="panel-channel" aria-selected="false" data-tab="channel">Channel mix</button><button role="tab" id="tab-actions" aria-controls="panel-actions" aria-selected="false" data-tab="actions">Implications</button><button role="tab" id="tab-method" aria-controls="panel-method" aria-selected="false" data-tab="method">Method & sources</button></nav>
+</div></div>
+<div class="panel" role="tabpanel" id="panel-overview" aria-labelledby="tab-overview"><section id="summary"><div class="wrap">
+<p class="eyebrow">What the data says</p><h2>Five findings</h2>
+<p class="lede">AAFES moved $75.42M through Dept 1097 over the last 52 weeks, down 12.9% year over year. Inside that contraction, the streaming picture splits cleanly in two.</p>
+<div class="findings">
+<div class="finding"><div class="fnum">1</div><div><h4>Roku is taking share in players while the category shrinks.</h4><p>The three-brand player category did $1.48M, down 2.8%. Roku grew +11.3% to $618,388 and lifted share from 36.4% to 41.7%. Amazon fell 8.3% and gave up 3.1 points.</p></div></div>
+<div class="finding"><div class="fnum">2</div><div><h4>Roku passed Amazon in monthly sales in July and August.</h4><p>Roku outsold Amazon Fire TV in each of the last two months on file &mdash; $46,300 vs $45,912 in July, $53,997 vs $43,673 in August. That is the first sustained crossover in the two-year series.</p></div></div>
+<div class="finding"><div class="fnum">3</div><div><h4>Roku's ASP is rising faster than Amazon's.</h4><p>Roku ASP moved from $37.36 to $40.69, up +8.9%, on 15,196 units. Amazon's ASP is effectively flat at $46.74. Roku is trading the mix up; Amazon is holding price and losing volume.</p></div></div>
+<div class="finding"><div class="fnum">4</div><div><h4>On the TV wall, Roku OS has all but disappeared.</h4><p>Roku-powered TV sets did $67,853 on 313 units &mdash; 0.1% of a $69.84M TV business, down 80%. Amazon entered the same wall this year with Hisense Fire TV sets at $125,224 from a standing start.</p></div></div>
+<div class="finding"><div class="fnum">5</div><div><h4>The small-screen online opportunity is smaller than the buyer's framing suggests.</h4><p>TVs 50&Prime; and under are 14.0% online &mdash; the least digital part of the department &mdash; and the segment is down 22.0% year over year. Ecommerce runs 27.5% department-wide and only clears 35% in November and December.</p></div></div>
+</div></div></section></div><div class="panel" role="tabpanel" id="panel-players" aria-labelledby="tab-players" hidden><section id="players"><div class="wrap">
+<p class="eyebrow">Streaming players</p><h2>The device race</h2>
+<p class="lede">Sticks, boxes and streambars only &mdash; licensed TV operating systems are handled separately below. Share is calculated against the three-brand player pool ($1.48M last 52 weeks); NVIDIA Shield is the only other player in the department at under $6.5K and is excluded. Apple TV is not carried in Dept 1097.</p>
+<div class="tiles">
+<div class="tile accent"><div class="k">Roku</div>
+    <div class="v">$618K</div>
+    <div class="d"><span class="up">+11.3%</span> &middot; 41.7% share</div>
+    <div class="d">15,196 units &middot; ASP $40.69</div></div>
+<div class="tile"><div class="k">Amazon Fire TV</div>
+    <div class="v">$762K</div>
+    <div class="d"><span class="down">-8.3%</span> &middot; 51.4% share</div>
+    <div class="d">16,312 units &middot; ASP $46.74</div></div>
+<div class="tile"><div class="k">Google</div>
+    <div class="v">$102K</div>
+    <div class="d"><span class="down">-25.8%</span> &middot; 6.9% share</div>
+    <div class="d">1,277 units &middot; ASP $79.85</div></div>
+<div class="tile"><div class="k">Category</div><div class="v">$1.48M</div>
+<div class="d"><span class="down">-2.8%</span> &middot; 32,785 units</div><div class="d">3 brands, 156 stores</div></div>
+</div>
+<figure><div class="chtitle">Monthly POS retail dollars by brand</div>
+<p class="chsub">Roku crosses Amazon Fire TV in July 2026 and holds the lead in August.</p>
+<div class="legend">
+<span><i class="swatch" style="background:var(--s-roku)"></i>Roku</span>
+<span><i class="swatch" style="background:var(--s-amzn)"></i>Amazon Fire TV</span>
+<span><i class="swatch" style="background:var(--s-goog)"></i>Google</span></div>
+<div class="chartbox"><svg viewBox="0 0 880 290" role="img" aria-label="pm"><line class="gl" x1="62" y1="256.0" x2="862" y2="256.0"/><text class="tk" x="53" y="259.5" text-anchor="end">$0</text><line class="gl" x1="62" y1="135.0" x2="862" y2="135.0"/><text class="tk" x="53" y="138.5" text-anchor="end">$50K</text><line class="gl" x1="62" y1="14.0" x2="862" y2="14.0"/><text class="tk" x="53" y="17.5" text-anchor="end">$100K</text><line class="ax" x1="62" y1="256.0" x2="862" y2="256.0"/><text class="tk" x="62.0" y="275.0" text-anchor="middle">24-09</text><text class="tk" x="131.6" y="275.0" text-anchor="middle">24-11</text><text class="tk" x="201.1" y="275.0" text-anchor="middle">25-01</text><text class="tk" x="270.7" y="275.0" text-anchor="middle">25-03</text><text class="tk" x="340.3" y="275.0" text-anchor="middle">25-05</text><text class="tk" x="409.8" y="275.0" text-anchor="middle">25-07</text><text class="tk" x="479.4" y="275.0" text-anchor="middle">25-09</text><text class="tk" x="549.0" y="275.0" text-anchor="middle">25-11</text><text class="tk" x="618.5" y="275.0" text-anchor="middle">26-01</text><text class="tk" x="688.1" y="275.0" text-anchor="middle">26-03</text><text class="tk" x="757.7" y="275.0" text-anchor="middle">26-05</text><text class="tk" x="862.0" y="275.0" text-anchor="middle">26-08</text><path d="M62.0,164.5 L96.8,158.4 L131.6,117.3 L166.3,140.0 L201.1,159.5 L235.9,151.3 L270.7,119.4 L305.5,150.3 L340.3,130.3 L375.0,157.3 L409.8,150.5 L444.6,128.4 L479.4,153.4 L514.2,159.3 L549.0,109.6 L583.7,117.3 L618.5,104.9 L653.3,127.8 L688.1,125.9 L722.9,138.2 L757.7,130.1 L792.4,139.7 L827.2,144.0 L862.0,125.3" fill="none" stroke="var(--s-roku)" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/><circle cx="862.0" cy="125.3" r="4.5" fill="var(--s-roku)" stroke="var(--panel)" stroke-width="2"/><path d="M62.0,21.2 L96.8,34.4 L131.6,12.4 L166.3,79.9 L201.1,179.7 L235.9,154.9 L270.7,82.2 L305.5,119.1 L340.3,82.7 L375.0,110.5 L409.8,111.4 L444.6,70.7 L479.4,122.6 L514.2,139.3 L549.0,126.8 L583.7,61.7 L618.5,14.8 L653.3,70.8 L688.1,104.3 L722.9,115.0 L757.7,69.4 L792.4,106.7 L827.2,144.9 L862.0,150.3" fill="none" stroke="var(--s-amzn)" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/><circle cx="862.0" cy="150.3" r="4.5" fill="var(--s-amzn)" stroke="var(--panel)" stroke-width="2"/><path d="M62.0,221.3 L96.8,217.7 L131.6,203.0 L166.3,220.7 L201.1,232.6 L235.9,235.9 L270.7,236.1 L305.5,245.1 L340.3,227.7 L375.0,233.0 L409.8,236.2 L444.6,230.3 L479.4,234.0 L514.2,240.0 L549.0,223.3 L583.7,233.7 L618.5,235.2 L653.3,242.2 L688.1,237.6 L722.9,239.0 L757.7,234.7 L792.4,236.4 L827.2,237.0 L862.0,232.3" fill="none" stroke="var(--s-goog)" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/><circle cx="862.0" cy="232.3" r="4.5" fill="var(--s-goog)" stroke="var(--panel)" stroke-width="2"/><circle class="pt pt-pm-0" cx="62.0" cy="164.5" r="3" fill="var(--s-roku)" stroke="var(--panel)" stroke-width="1.5" opacity="0"/><circle class="pt pt-pm-0" cx="62.0" cy="21.2" r="3" fill="var(--s-amzn)" stroke="var(--panel)" stroke-width="1.5" opacity="0"/><circle class="pt pt-pm-0" cx="62.0" cy="221.3" r="3" fill="var(--s-goog)" stroke="var(--panel)" stroke-width="1.5" opacity="0"/><rect class="hoverzone hz-pm" data-i="0" x="44.6" y="14" width="34.8" height="242"/><circle class="pt pt-pm-1" cx="96.8" cy="158.4" r="3" fill="var(--s-roku)" stroke="var(--panel)" stroke-width="1.5" opacity="0"/><circle class="pt pt-pm-1" cx="96.8" cy="34.4" r="3" fill="var(--s-amzn)" stroke="var(--panel)" stroke-width="1.5" opacity="0"/><circle class="pt pt-pm-1" cx="96.8" cy="217.7" r="3" fill="var(--s-goog)" stroke="var(--panel)" stroke-width="1.5" opacity="0"/><rect class="hoverzone hz-pm" data-i="1" x="79.4" y="14" width="34.8" height="242"/><circle class="pt pt-pm-2" cx="131.6" cy="117.3" r="3" fill="var(--s-roku)" stroke="var(--panel)" stroke-width="1.5" opacity="0"/><circle class="pt pt-pm-2" cx="131.6" cy="12.4" r="3" fill="var(--s-amzn)" stroke="var(--panel)" stroke-width="1.5" opacity="0"/><circle class="pt pt-pm-2" cx="131.6" cy="203.0" r="3" fill="var(--s-goog)" stroke="var(--panel)" stroke-width="1.5" opacity="0"/><rect class="hoverzone hz-pm" data-i="2" x="114.2" y="14" width="34.8" height="242"/><circle class="pt pt-pm-3" cx="166.3" cy="140.0" r="3" fill="var(--s-roku)" stroke="var(--panel)" stroke-width="1.5" opacity="0"/><circle class="pt pt-pm-3" cx="166.3" cy="79.9" r="3" fill="var(--s-amzn)" stroke="var(--panel)" stroke-width="1.5" opacity="0"/><circle class="pt pt-pm-3" cx="166.3" cy="220.7" r="3" fill="var(--s-goog)" stroke="var(--panel)" stroke-width="1.5" opacity="0"/><rect class="hoverzone hz-pm" data-i="3" x="149.0" y="14" width="34.8" height="242"/><circle class="pt pt-pm-4" cx="201.1" cy="159.5" r="3" fill="var(--s-roku)" stroke="var(--panel)" stroke-width="1.5" opacity="0"/><circle class="pt pt-pm-4" cx="201.1" cy="179.7" r="3" fill="var(--s-amzn)" stroke="var(--panel)" stroke-width="1.5" opacity="0"/><circle class="pt pt-pm-4" cx="201.1" cy="232.6" r="3" fill="var(--s-goog)" stroke="var(--panel)" stroke-width="1.5" opacity="0"/><rect class="hoverzone hz-pm" data-i="4" x="183.7" y="14" width="34.8" height="242"/><circle class="pt pt-pm-5" cx="235.9" cy="151.3" r="3" fill="var(--s-roku)" stroke="var(--panel)" stroke-width="1.5" opacity="0"/><circle class="pt pt-pm-5" cx="235.9" cy="154.9" r="3" fill="var(--s-amzn)" stroke="var(--panel)" stroke-width="1.5" opacity="0"/><circle class="pt pt-pm-5" cx="235.9" cy="235.9" r="3" fill="var(--s-goog)" stroke="var(--panel)" stroke-width="1.5" opacity="0"/><rect class="hoverzone hz-pm" data-i="5" x="218.5" y="14" width="34.8" height="242"/><circle class="pt pt-pm-6" cx="270.7" cy="119.4" r="3" fill="var(--s-roku)" stroke="var(--panel)" stroke-width="1.5" opacity="0"/><circle class="pt pt-pm-6" cx="270.7" cy="82.2" r="3" fill="var(--s-amzn)" stroke="var(--panel)" stroke-width="1.5" opacity="0"/><circle class="pt pt-pm-6" cx="270.7" cy="236.1" r="3" fill="var(--s-goog)" stroke="var(--panel)" stroke-width="1.5" opacity="0"/><rect class="hoverzone hz-pm" data-i="6" x="253.3" y="14" width="34.8" height="242"/><circle class="pt pt-pm-7" cx="305.5" cy="150.3" r="3" fill="var(--s-roku)" stroke="var(--panel)" stroke-width="1.5" opacity="0"/><circle class="pt pt-pm-7" cx="305.5" cy="119.1" r="3" fill="var(--s-amzn)" stroke="var(--panel)" stroke-width="1.5" opacity="0"/><circle class="pt pt-pm-7" cx="305.5" cy="245.1" r="3" fill="var(--s-goog)" stroke="var(--panel)" stroke-width="1.5" opacity="0"/><rect class="hoverzone hz-pm" data-i="7" x="288.1" y="14" width="34.8" height="242"/><circle class="pt pt-pm-8" cx="340.3" cy="130.3" r="3" fill="var(--s-roku)" stroke="var(--panel)" stroke-width="1.5" opacity="0"/><circle class="pt pt-pm-8" cx="340.3" cy="82.7" r="3" fill="var(--s-amzn)" stroke="var(--panel)" stroke-width="1.5" opacity="0"/><circle class="pt pt-pm-8" cx="340.3" cy="227.7" r="3" fill="var(--s-goog)" stroke="var(--panel)" stroke-width="1.5" opacity="0"/><rect class="hoverzone hz-pm" data-i="8" x="322.9" y="14" width="34.8" height="242"/><circle class="pt pt-pm-9" cx="375.0" cy="157.3" r="3" fill="var(--s-roku)" stroke="var(--panel)" stroke-width="1.5" opacity="0"/><circle class="pt pt-pm-9" cx="375.0" cy="110.5" r="3" fill="var(--s-amzn)" stroke="var(--panel)" stroke-width="1.5" opacity="0"/><circle class="pt pt-pm-9" cx="375.0" cy="233.0" r="3" fill="var(--s-goog)" stroke="var(--panel)" stroke-width="1.5" opacity="0"/><rect class="hoverzone hz-pm" data-i="9" x="357.7" y="14" width="34.8" height="242"/><circle class="pt pt-pm-10" cx="409.8" cy="150.5" r="3" fill="var(--s-roku)" stroke="var(--panel)" stroke-width="1.5" opacity="0"/><circle class="pt pt-pm-10" cx="409.8" cy="111.4" r="3" fill="var(--s-amzn)" stroke="var(--panel)" stroke-width="1.5" opacity="0"/><circle class="pt pt-pm-10" cx="409.8" cy="236.2" r="3" fill="var(--s-goog)" stroke="var(--panel)" stroke-width="1.5" opacity="0"/><rect class="hoverzone hz-pm" data-i="10" x="392.4" y="14" width="34.8" height="242"/><circle class="pt pt-pm-11" cx="444.6" cy="128.4" r="3" fill="var(--s-roku)" stroke="var(--panel)" stroke-width="1.5" opacity="0"/><circle class="pt pt-pm-11" cx="444.6" cy="70.7" r="3" fill="var(--s-amzn)" stroke="var(--panel)" stroke-width="1.5" opacity="0"/><circle class="pt pt-pm-11" cx="444.6" cy="230.3" r="3" fill="var(--s-goog)" stroke="var(--panel)" stroke-width="1.5" opacity="0"/><rect class="hoverzone hz-pm" data-i="11" x="427.2" y="14" width="34.8" height="242"/><circle class="pt pt-pm-12" cx="479.4" cy="153.4" r="3" fill="var(--s-roku)" stroke="var(--panel)" stroke-width="1.5" opacity="0"/><circle class="pt pt-pm-12" cx="479.4" cy="122.6" r="3" fill="var(--s-amzn)" stroke="var(--panel)" stroke-width="1.5" opacity="0"/><circle class="pt pt-pm-12" cx="479.4" cy="234.0" r="3" fill="var(--s-goog)" stroke="var(--panel)" stroke-width="1.5" opacity="0"/><rect class="hoverzone hz-pm" data-i="12" x="462.0" y="14" width="34.8" height="242"/><circle class="pt pt-pm-13" cx="514.2" cy="159.3" r="3" fill="var(--s-roku)" stroke="var(--panel)" stroke-width="1.5" opacity="0"/><circle class="pt pt-pm-13" cx="514.2" cy="139.3" r="3" fill="var(--s-amzn)" stroke="var(--panel)" stroke-width="1.5" opacity="0"/><circle class="pt pt-pm-13" cx="514.2" cy="240.0" r="3" fill="var(--s-goog)" stroke="var(--panel)" stroke-width="1.5" opacity="0"/><rect class="hoverzone hz-pm" data-i="13" x="496.8" y="14" width="34.8" height="242"/><circle class="pt pt-pm-14" cx="549.0" cy="109.6" r="3" fill="var(--s-roku)" stroke="var(--panel)" stroke-width="1.5" opacity="0"/><circle class="pt pt-pm-14" cx="549.0" cy="126.8" r="3" fill="var(--s-amzn)" stroke="var(--panel)" stroke-width="1.5" opacity="0"/><circle class="pt pt-pm-14" cx="549.0" cy="223.3" r="3" fill="var(--s-goog)" stroke="var(--panel)" stroke-width="1.5" opacity="0"/><rect class="hoverzone hz-pm" data-i="14" x="531.6" y="14" width="34.8" height="242"/><circle class="pt pt-pm-15" cx="583.7" cy="117.3" r="3" fill="var(--s-roku)" stroke="var(--panel)" stroke-width="1.5" opacity="0"/><circle class="pt pt-pm-15" cx="583.7" cy="61.7" r="3" fill="var(--s-amzn)" stroke="var(--panel)" stroke-width="1.5" opacity="0"/><circle class="pt pt-pm-15" cx="583.7" cy="233.7" r="3" fill="var(--s-goog)" stroke="var(--panel)" stroke-width="1.5" opacity="0"/><rect class="hoverzone hz-pm" data-i="15" x="566.3" y="14" width="34.8" height="242"/><circle class="pt pt-pm-16" cx="618.5" cy="104.9" r="3" fill="var(--s-roku)" stroke="var(--panel)" stroke-width="1.5" opacity="0"/><circle class="pt pt-pm-16" cx="618.5" cy="14.8" r="3" fill="var(--s-amzn)" stroke="var(--panel)" stroke-width="1.5" opacity="0"/><circle class="pt pt-pm-16" cx="618.5" cy="235.2" r="3" fill="var(--s-goog)" stroke="var(--panel)" stroke-width="1.5" opacity="0"/><rect class="hoverzone hz-pm" data-i="16" x="601.1" y="14" width="34.8" height="242"/><circle class="pt pt-pm-17" cx="653.3" cy="127.8" r="3" fill="var(--s-roku)" stroke="var(--panel)" stroke-width="1.5" opacity="0"/><circle class="pt pt-pm-17" cx="653.3" cy="70.8" r="3" fill="var(--s-amzn)" stroke="var(--panel)" stroke-width="1.5" opacity="0"/><circle class="pt pt-pm-17" cx="653.3" cy="242.2" r="3" fill="var(--s-goog)" stroke="var(--panel)" stroke-width="1.5" opacity="0"/><rect class="hoverzone hz-pm" data-i="17" x="635.9" y="14" width="34.8" height="242"/><circle class="pt pt-pm-18" cx="688.1" cy="125.9" r="3" fill="var(--s-roku)" stroke="var(--panel)" stroke-width="1.5" opacity="0"/><circle class="pt pt-pm-18" cx="688.1" cy="104.3" r="3" fill="var(--s-amzn)" stroke="var(--panel)" stroke-width="1.5" opacity="0"/><circle class="pt pt-pm-18" cx="688.1" cy="237.6" r="3" fill="var(--s-goog)" stroke="var(--panel)" stroke-width="1.5" opacity="0"/><rect class="hoverzone hz-pm" data-i="18" x="670.7" y="14" width="34.8" height="242"/><circle class="pt pt-pm-19" cx="722.9" cy="138.2" r="3" fill="var(--s-roku)" stroke="var(--panel)" stroke-width="1.5" opacity="0"/><circle class="pt pt-pm-19" cx="722.9" cy="115.0" r="3" fill="var(--s-amzn)" stroke="var(--panel)" stroke-width="1.5" opacity="0"/><circle class="pt pt-pm-19" cx="722.9" cy="239.0" r="3" fill="var(--s-goog)" stroke="var(--panel)" stroke-width="1.5" opacity="0"/><rect class="hoverzone hz-pm" data-i="19" x="705.5" y="14" width="34.8" height="242"/><circle class="pt pt-pm-20" cx="757.7" cy="130.1" r="3" fill="var(--s-roku)" stroke="var(--panel)" stroke-width="1.5" opacity="0"/><circle class="pt pt-pm-20" cx="757.7" cy="69.4" r="3" fill="var(--s-amzn)" stroke="var(--panel)" stroke-width="1.5" opacity="0"/><circle class="pt pt-pm-20" cx="757.7" cy="234.7" r="3" fill="var(--s-goog)" stroke="var(--panel)" stroke-width="1.5" opacity="0"/><rect class="hoverzone hz-pm" data-i="20" x="740.3" y="14" width="34.8" height="242"/><circle class="pt pt-pm-21" cx="792.4" cy="139.7" r="3" fill="var(--s-roku)" stroke="var(--panel)" stroke-width="1.5" opacity="0"/><circle class="pt pt-pm-21" cx="792.4" cy="106.7" r="3" fill="var(--s-amzn)" stroke="var(--panel)" stroke-width="1.5" opacity="0"/><circle class="pt pt-pm-21" cx="792.4" cy="236.4" r="3" fill="var(--s-goog)" stroke="var(--panel)" stroke-width="1.5" opacity="0"/><rect class="hoverzone hz-pm" data-i="21" x="775.0" y="14" width="34.8" height="242"/><circle class="pt pt-pm-22" cx="827.2" cy="144.0" r="3" fill="var(--s-roku)" stroke="var(--panel)" stroke-width="1.5" opacity="0"/><circle class="pt pt-pm-22" cx="827.2" cy="144.9" r="3" fill="var(--s-amzn)" stroke="var(--panel)" stroke-width="1.5" opacity="0"/><circle class="pt pt-pm-22" cx="827.2" cy="237.0" r="3" fill="var(--s-goog)" stroke="var(--panel)" stroke-width="1.5" opacity="0"/><rect class="hoverzone hz-pm" data-i="22" x="809.8" y="14" width="34.8" height="242"/><circle class="pt pt-pm-23" cx="862.0" cy="125.3" r="3" fill="var(--s-roku)" stroke="var(--panel)" stroke-width="1.5" opacity="0"/><circle class="pt pt-pm-23" cx="862.0" cy="150.3" r="3" fill="var(--s-amzn)" stroke="var(--panel)" stroke-width="1.5" opacity="0"/><circle class="pt pt-pm-23" cx="862.0" cy="232.3" r="3" fill="var(--s-goog)" stroke="var(--panel)" stroke-width="1.5" opacity="0"/><rect class="hoverzone hz-pm" data-i="23" x="844.6" y="14" width="34.8" height="242"/><line class="ch-pm" x1="0" y1="14" x2="0" y2="256" stroke="var(--axis)" stroke-width="1" stroke-dasharray="3 3" opacity="0"/></svg><div class="tip" id="tip-pm"></div></div>
+<figcaption>Full months only; W/E dates grouped by calendar month. Source: AAFES Atlas ITBIS, Dept 1097.</figcaption></figure>
+<div class="tblwrap"><table><thead><tr><th>Brand</th><th class="num">POS $ L52</th><th class="num">POS $ prior</th><th class="num">$ YoY</th><th class="num">Units L52</th><th class="num">Unit YoY</th><th class="num">ASP L52</th><th class="num">ASP prior</th><th class="num">Share L52</th><th class="num">Share prior</th></tr></thead><tbody>
+<tr><td>Amazon Fire TV</td><td class="num">$762,493</td><td class="num">$831,824</td><td class="num"><span class="down">-8.3%</span></td><td class="num">16,312</td><td class="num"><span class="down">-8.8%</span></td><td class="num">$46.74</td><td class="num">$46.50</td><td class="num">51.4%</td><td class="num">54.6%</td></tr>
+<tr class="hi"><td>Roku</td><td class="num">$618,388</td><td class="num">$555,669</td><td class="num"><span class="up">+11.3%</span></td><td class="num">15,196</td><td class="num"><span class="up">+2.2%</span></td><td class="num">$40.69</td><td class="num">$37.36</td><td class="num">41.7%</td><td class="num">36.4%</td></tr>
+<tr><td>Google</td><td class="num">$101,971</td><td class="num">$137,365</td><td class="num"><span class="down">-25.8%</span></td><td class="num">1,277</td><td class="num"><span class="down">-59.5%</span></td><td class="num">$79.85</td><td class="num">$43.59</td><td class="num">6.9%</td><td class="num">9.0%</td></tr>
+<tr class="total"><td>Category</td><td class="num">$1,482,852</td><td class="num">$1,524,858</td><td class="num"><span class="down">-2.8%</span></td><td class="num">32,785</td><td class="num">&mdash;</td><td class="num">$45.23</td><td class="num">&mdash;</td><td class="num">100.0%</td><td class="num">100.0%</td></tr>
+</tbody></table></div>
+<div class="callout"><p><strong>Read on ASP.</strong> Google's revenue fall (-25.8%) is a mix story, not a collapse in demand &mdash; units dropped 59% as the cheap Chromecast line gave way to the Google TV Streamer (4K), lifting ASP from $43.59 to $79.85. Roku is doing the healthier version of the same move: ASP up +8.9% <em>with</em> units up +2.2%.</p></div>
+</div></section><section id="roku"><div class="wrap">
+<p class="eyebrow">Roku, in detail</p><h2>Where the Roku business actually lives</h2>
+<h3>Item performance</h3>
+<div class="tblwrap"><table><thead><tr><th>Item</th><th class="num">POS $ L52</th><th class="num">POS $ prior</th><th class="num">$ YoY</th><th class="num">Units L52</th><th class="num">ASP</th><th class="num">On hand u</th></tr></thead><tbody>
+<tr><td>Roku Streaming Stick 4K</td><td class="num">$166,408</td><td class="num">$234,397</td><td class="num"><span class="down">-29.0%</span></td><td class="num">4,076</td><td class="num">$40.83</td><td class="num">188</td></tr>
+<tr><td>Roku Ultra 4850R Network Audio/Video Player</td><td class="num">$98,917</td><td class="num">$0</td><td class="num"><span style="color:var(--ink-3)">n/a</span></td><td class="num">1,104</td><td class="num">$89.60</td><td class="num">490</td></tr>
+<tr><td>Roku Streaming Stick Plus</td><td class="num">$98,815</td><td class="num">$0</td><td class="num"><span style="color:var(--ink-3)">n/a</span></td><td class="num">2,731</td><td class="num">$36.18</td><td class="num">371</td></tr>
+<tr><td>ROKU Streaming Stick - 3840R</td><td class="num">$86,173</td><td class="num">$0</td><td class="num"><span style="color:var(--ink-3)">n/a</span></td><td class="num">3,295</td><td class="num">$26.15</td><td class="num">238</td></tr>
+<tr><td>Roku Streambar SE - 9104R</td><td class="num">$68,334</td><td class="num">$0</td><td class="num"><span style="color:var(--ink-3)">n/a</span></td><td class="num">725</td><td class="num">$94.25</td><td class="num">679</td></tr>
+<tr><td>Roku 3941K Roku Express 4K plus Streaming Player</td><td class="num">$51,514</td><td class="num">$172,917</td><td class="num"><span class="down">-70.2%</span></td><td class="num">1,466</td><td class="num">$35.14</td><td class="num">44</td></tr>
+<tr><td>3960R Roku Express (New, 2022)</td><td class="num">$45,026</td><td class="num">$129,605</td><td class="num"><span class="down">-65.3%</span></td><td class="num">1,755</td><td class="num">$25.66</td><td class="num">48</td></tr>
+<tr><td>4802R Roku Ultra</td><td class="num">$2,756</td><td class="num">$18,548</td><td class="num"><span class="down">-85.1%</span></td><td class="num">31</td><td class="num">$88.90</td><td class="num">19</td></tr>
+<tr><td>ROKU ULTRA 4800R</td><td class="num">$362</td><td class="num">$112</td><td class="num"><span class="up">+222.4%</span></td><td class="num">7</td><td class="num">$51.75</td><td class="num">11</td></tr>
+<tr class="total"><td>Roku total</td><td class="num">$618,388</td><td class="num">$555,669</td><td class="num"><span class="up">+11.3%</span></td><td class="num">15,196</td><td class="num">$40.69</td><td class="num">2,089</td></tr>
+</tbody></table></div>
+<p>The growth is concentrated in the refreshed line. The 4776xxx generation &mdash; Streaming Stick Plus, Streaming Stick 3840R, Ultra 4850R and Streambar SE &mdash; contributed $352,239 with no prior-year base, more than offsetting the run-down of the older Streaming Stick 4K and Express SKUs.</p>
+<h3>Region and channel</h3>
+<div class="tblwrap"><table><thead><tr><th>Region</th><th class="num">Roku $</th><th class="num">Roku u</th><th class="num">Amazon $</th><th class="num">Google $</th><th class="num">Roku share</th></tr></thead><tbody>
+<tr><td>CONUS</td><td class="num">$346,893</td><td class="num">8,614</td><td class="num">$336,016</td><td class="num">$55,298</td><td class="num">47.0%</td></tr>
+<tr><td>OCONUS</td><td class="num">$249,310</td><td class="num">6,068</td><td class="num">$422,629</td><td class="num">$46,804</td><td class="num">34.7%</td></tr>
+<tr><td>Exchange online</td><td class="num">$22,185</td><td class="num">514</td><td class="num">$3,847</td><td class="num">-$131</td><td class="num">85.7%</td></tr>
+</tbody></table></div>
+<div class="callout"><p><strong>Streaming players are a store business, not an online one.</strong> Only 3.6% of Roku player dollars come through exchange ecommerce &mdash; and that is the <em>highest</em> of the three brands (Amazon 0.5%, Google effectively nil). Roku also over-indexes OCONUS: 40% of Roku dollars come from overseas and deployed locations, where a streaming stick solves a real problem for a soldier who cannot get local content.</p></div>
+<h3>Inventory position</h3>
+<div class="tiles">
+<div class="tile accent"><div class="k">Roku on hand</div><div class="v">2,089<span style="font-size:16px;font-weight:500;color:var(--ink-3)"> u</span></div>
+    <div class="d">$210,265 at retail</div><div class="d">7.1 weeks of supply</div></div>
+<div class="tile"><div class="k">Amazon on hand</div><div class="v">1,857<span style="font-size:16px;font-weight:500;color:var(--ink-3)"> u</span></div>
+    <div class="d">$181,253 at retail</div><div class="d">5.9 weeks of supply</div></div>
+<div class="tile"><div class="k">Google on hand</div><div class="v">426<span style="font-size:16px;font-weight:500;color:var(--ink-3)"> u</span></div>
+    <div class="d">$32,035 at retail</div><div class="d">17.3 weeks of supply</div></div>
+</div>
+<p>Roku carries the most owned inventory of the three &mdash; 2,089 units and $210,265 at retail against Amazon's 1,857 units &mdash; on lower annual volume. That is 7.1 weeks of supply versus Amazon's 5.9. Given Roku's sell-through is accelerating, that position is defensible, but it is the metric to watch if the refreshed line plateaus. Google's 17 weeks is the outlier and reads as overstock on a declining line.</p>
+</div></section></div><div class="panel" role="tabpanel" id="panel-os" aria-labelledby="tab-os" hidden><section id="os"><div class="wrap">
+<p class="eyebrow">Licensed TV operating systems</p><h2>The wall Roku is not on</h2>
+<p class="lede">Separate from players: the TV sets themselves. AAFES sold $69.84M of TV hardware over the last 52 weeks. This is where a Roku TV OS licensing position would show up &mdash; and where the gap is starkest.</p>
+<figure><div class="chtitle">TV set retail dollars by stated operating system</div>
+<p class="chsub">Platforms named explicitly in the AAFES item description, against a $69.84M total TV business.</p>
+<svg viewBox="0 0 880 126" role="img"><text class="tk" x="139" y="23.5" text-anchor="end" fill="var(--ink-2)" font-size="12.5">Roku TV</text><rect x="150" y="6.0" width="7.4" height="27" rx="4" fill="var(--s-roku)"/><text class="dlabel" x="165.4" y="23.5" fill="var(--ink)">$68K</text><text class="tk" x="139" y="61.5" text-anchor="end" fill="var(--ink-2)" font-size="12.5">Fire TV (Hisense)</text><rect x="150" y="44.0" width="13.6" height="27" rx="4" fill="var(--s-amzn)"/><text class="dlabel" x="171.6" y="61.5" fill="var(--ink)">$125K</text><text class="tk" x="139" y="99.5" text-anchor="end" fill="var(--ink-2)" font-size="12.5">Google TV (stated)</text><rect x="150" y="82.0" width="672.0" height="27" rx="4" fill="var(--s-goog)"/><text class="dlabel" x="830.0" y="99.5" fill="var(--ink)">$6.2M</text></svg>
+<figcaption>Samsung (Tizen) and LG (webOS) account for 78% of TV dollars and are excluded from this chart to keep the licensed-OS comparison legible. See the caution below on OS coverage.</figcaption></figure>
+<div class="tblwrap"><table><thead><tr><th>Platform</th><th class="num">POS $ L52</th><th class="num">POS $ prior</th><th class="num">$ YoY</th><th class="num">Units L52</th><th class="num">ASP</th><th class="num">Share of TV $</th></tr></thead><tbody>
+<tr><td>Tizen (Samsung)</td><td class="num">$29,943,302</td><td class="num">$33,214,716</td><td class="num"><span class="down">-9.8%</span></td><td class="num">55,498</td><td class="num">$539.54</td><td class="num">42.9%</td></tr>
+<tr><td>webOS (LG)</td><td class="num">$24,422,115</td><td class="num">$23,638,115</td><td class="num"><span class="up">+3.3%</span></td><td class="num">39,789</td><td class="num">$613.79</td><td class="num">35.0%</td></tr>
+<tr><td>Google TV</td><td class="num">$6,190,022</td><td class="num">$18,120,623</td><td class="num"><span class="down">-65.8%</span></td><td class="num">17,805</td><td class="num">$347.66</td><td class="num">8.9%</td></tr>
+<tr><td>Other/Unknown</td><td class="num">$5,453,021</td><td class="num">$3,122,084</td><td class="num"><span class="up">+74.7%</span></td><td class="num">23,310</td><td class="num">$233.93</td><td class="num">7.8%</td></tr>
+<tr><td>VIDAA/Other (Hisense)</td><td class="num">$3,637,365</td><td class="num">$960,527</td><td class="num"><span class="up">+278.7%</span></td><td class="num">8,291</td><td class="num">$438.71</td><td class="num">5.2%</td></tr>
+<tr><td>Fire TV</td><td class="num">$125,224</td><td class="num">$0</td><td class="num"><span style="color:var(--ink-3)">n/a</span></td><td class="num">462</td><td class="num">$271.05</td><td class="num">0.2%</td></tr>
+<tr class="hi"><td>Roku TV</td><td class="num">$67,853</td><td class="num">$346,637</td><td class="num"><span class="down">-80.4%</span></td><td class="num">313</td><td class="num">$216.78</td><td class="num">0.1%</td></tr>
+<tr class="total"><td>All TV sets</td><td class="num">$69,838,901</td><td class="num">$79,402,703</td><td class="num"><span class="down">-12.0%</span></td><td class="num">145,468</td><td class="num">&mdash;</td><td class="num">100.0%</td></tr>
+</tbody></table></div>
+<div class="caution"><p><strong>Coverage caution.</strong> Operating system is only reliable where AAFES states it in the item description. Samsung and LG are safely inferred from brand. TCL, Hisense and Element ship on several platforms and their newer AAFES descriptions (for example &ldquo;TCL 55&Prime; S5 S-Class&rdquo;) name no OS at all &mdash; those dollars sit in <em>Other/Unknown</em> and <em>VIDAA/Other</em> rather than being assigned a platform. The Roku TV and Fire TV figures are firm, because every one of those items names the platform. The Google TV figure is a floor, not a ceiling.</p></div>
+<p>Roku's licensed-OS position at AAFES has gone from thin to negligible: $67,853 on 313 units, against $346,637 and 2,175 units a year ago. Westinghouse carried nearly all of it, and Westinghouse as a brand fell 72% to $107,086. The prior review in July put Roku OS at roughly 0.4% unit share; it is now 0.22%.</p>
+<p>The contrast with Amazon is the point. Amazon went from no TV-set presence at all to $125,224 on 462 units in a single year by landing the Hisense QD6 Fire TV line &mdash; and is carrying 1,092 units of on-hand inventory behind it. That is what an OS licensing win looks like in this channel, and it happened while Roku's position eroded.</p>
+</div></section></div><div class="panel" role="tabpanel" id="panel-small" aria-labelledby="tab-small" hidden><section id="small"><div class="wrap">
+<p class="eyebrow">TVs 50&Prime; and under</p><h2>Sizing the small-screen prize</h2>
+<p class="lede">If a Roku TV assortment returns to AAFES, this is the pool it competes in: $11.77M across 57,637 units, 17% of the TV business. It is the fastest-shrinking part of the department, down 22.0% against 9.7% for sets over 50&Prime;.</p>
+<div class="tiles">
+<div class="tile accent"><div class="k">Segment size</div><div class="v">$11.77M</div><div class="d"><span class="down">-22.0%</span> year over year</div><div class="d">16.9% of TV dollars</div></div>
+<div class="tile"><div class="k">Units</div><div class="v">57,637</div><div class="d"><span class="down">-18.2%</span> year over year</div><div class="d">Blended ASP $204.18</div></div>
+<div class="tile"><div class="k">Online share</div><div class="v">14.0%</div><div class="d">prior year 15.5%</div><div class="d">vs 32.1% for sets &gt;50&Prime;</div></div>
+<div class="tile"><div class="k">Roku OS share here</div><div class="v">0.7%</div><div class="d">Westinghouse, $84,044</div><div class="d"><span class="down">-78.1%</span> year over year</div></div>
+</div>
+<h3>By brand</h3>
+<figure><div class="chtitle">TVs 50&Prime; and under &mdash; retail dollars by brand</div>
+<p class="chsub">Last 52 weeks. Samsung and LG now take 62% of a tier that used to belong to value brands.</p>
+<svg viewBox="0 0 880 284" role="img"><text class="tk" x="139" y="21.5" text-anchor="end" fill="var(--ink-2)" font-size="12.5">Samsung</text><rect x="150" y="6.0" width="672.0" height="23" rx="4" fill="var(--b1)"/><text class="dlabel" x="830.0" y="21.5" fill="var(--ink)">$4.0M</text><text class="tk" x="139" y="55.5" text-anchor="end" fill="var(--ink-2)" font-size="12.5">LG</text><rect x="150" y="40.0" width="530.4" height="23" rx="4" fill="var(--b2)"/><text class="dlabel" x="688.4" y="55.5" fill="var(--ink)">$3.2M</text><text class="tk" x="139" y="89.5" text-anchor="end" fill="var(--ink-2)" font-size="12.5">Element</text><rect x="150" y="74.0" width="323.0" height="23" rx="4" fill="var(--b3)"/><text class="dlabel" x="481.0" y="89.5" fill="var(--ink)">$1.9M</text><text class="tk" x="139" y="123.5" text-anchor="end" fill="var(--ink-2)" font-size="12.5">TCL</text><rect x="150" y="108.0" width="243.2" height="23" rx="4" fill="var(--b4)"/><text class="dlabel" x="401.2" y="123.5" fill="var(--ink)">$1.5M</text><text class="tk" x="139" y="157.5" text-anchor="end" fill="var(--ink-2)" font-size="12.5">Hisense</text><rect x="150" y="142.0" width="146.9" height="23" rx="4" fill="var(--b5)"/><text class="dlabel" x="304.9" y="157.5" fill="var(--ink)">$885K</text><text class="tk" x="139" y="191.5" text-anchor="end" fill="var(--ink-2)" font-size="12.5">Sony</text><rect x="150" y="176.0" width="24.0" height="23" rx="4" fill="var(--b6)"/><text class="dlabel" x="182.0" y="191.5" fill="var(--ink)">$145K</text><text class="tk" x="139" y="225.5" text-anchor="end" fill="var(--ink-2)" font-size="12.5">Westinghouse</text><rect x="150" y="210.0" width="14.0" height="23" rx="4" fill="var(--b7)"/><text class="dlabel" x="172.0" y="225.5" fill="var(--ink)">$84K</text><text class="tk" x="139" y="259.5" text-anchor="end" fill="var(--ink-2)" font-size="12.5">Vizio</text><rect x="150" y="244.0" width="1.5" height="23" rx="4" fill="var(--b8)"/><text class="dlabel" x="158.2" y="259.5" fill="var(--ink)">$1K</text></svg>
+<figcaption>Screen size parsed from the AAFES item description and model number. Source: AAFES Atlas ITBIS, Dept 1097.</figcaption></figure>
+<div class="tblwrap"><table><thead><tr><th>Brand</th><th class="num">POS $ L52</th><th class="num">$ YoY</th><th class="num">Units L52</th><th class="num">Unit YoY</th><th class="num">ASP L52</th><th class="num">ASP prior</th><th class="num">Share</th></tr></thead><tbody>
+<tr><td>Samsung</td><td class="num">$4,047,751</td><td class="num"><span class="down">-8.9%</span></td><td class="num">17,812</td><td class="num"><span class="up">+13.8%</span></td><td class="num">$227.25</td><td class="num">$283.91</td><td class="num">34.4%</td></tr>
+<tr><td>LG</td><td class="num">$3,195,110</td><td class="num"><span class="up">+11.3%</span></td><td class="num">11,403</td><td class="num"><span class="up">+26.8%</span></td><td class="num">$280.20</td><td class="num">$319.12</td><td class="num">27.1%</td></tr>
+<tr><td>Element</td><td class="num">$1,945,809</td><td class="num"><span class="down">-34.0%</span></td><td class="num">15,463</td><td class="num"><span class="down">-27.4%</span></td><td class="num">$125.84</td><td class="num">$138.41</td><td class="num">16.5%</td></tr>
+<tr><td>TCL</td><td class="num">$1,464,768</td><td class="num"><span class="down">-38.8%</span></td><td class="num">8,116</td><td class="num"><span class="down">-40.3%</span></td><td class="num">$180.48</td><td class="num">$175.92</td><td class="num">12.4%</td></tr>
+<tr><td>Hisense</td><td class="num">$885,026</td><td class="num"><span class="down">-46.0%</span></td><td class="num">4,089</td><td class="num"><span class="down">-46.9%</span></td><td class="num">$216.44</td><td class="num">$213.03</td><td class="num">7.5%</td></tr>
+<tr><td>Sony</td><td class="num">$144,764</td><td class="num"><span class="down">-63.4%</span></td><td class="num">264</td><td class="num"><span class="down">-61.5%</span></td><td class="num">$548.35</td><td class="num">$576.27</td><td class="num">1.2%</td></tr>
+<tr><td>Westinghouse</td><td class="num">$84,044</td><td class="num"><span class="down">-78.1%</span></td><td class="num">467</td><td class="num"><span class="down">-81.3%</span></td><td class="num">$179.97</td><td class="num">$154.28</td><td class="num">0.7%</td></tr>
+<tr><td>Vizio</td><td class="num">$1,335</td><td class="num"><span class="down">-83.9%</span></td><td class="num">23</td><td class="num"><span class="down">-70.1%</span></td><td class="num">$58.04</td><td class="num">$107.89</td><td class="num">0.0%</td></tr>
+<tr class="total"><td>Total &le;50&Prime;</td><td class="num">$11,768,607</td><td class="num"><span class="down">-22.0%</span></td><td class="num">57,637</td><td class="num"><span class="down">-18.2%</span></td><td class="num">$204.18</td><td class="num">&mdash;</td><td class="num">100.0%</td></tr>
+</tbody></table></div>
+<div class="caution"><p><strong>The tier is not just shrinking &mdash; it is premiumising.</strong> LG grew +11.3% in dollars and +26.8% in units under 50&Prime;; Samsung grew units +13.8%. Every value brand went backwards: Element -34%, TCL -39%, Hisense -46%, Westinghouse -78%. The shopper who used to buy a $130 off-brand 32&Prime; is buying a branded set instead. A Roku OS re-entry that leans on price alone is entering the half of this tier that is losing.</p></div>
+<h3>By size band and region</h3>
+<div class="tblwrap"><table><thead><tr><th>Size band</th><th class="num">POS $ L52</th><th class="num">$ YoY</th><th class="num">Units</th><th class="num">Unit YoY</th><th class="num">ASP</th><th class="num">Share of &le;50&Prime;</th></tr></thead><tbody>
+<tr><td>&le;32&Prime;</td><td class="num">$2,487,239</td><td class="num"><span class="down">-26.8%</span></td><td class="num">21,073</td><td class="num"><span class="down">-21.2%</span></td><td class="num">$118.03</td><td class="num">21.1%</td></tr>
+<tr><td>33-43&Prime;</td><td class="num">$4,636,584</td><td class="num"><span class="down">-22.6%</span></td><td class="num">21,657</td><td class="num"><span class="down">-15.9%</span></td><td class="num">$214.09</td><td class="num">39.4%</td></tr>
+<tr><td>44-50&Prime;</td><td class="num">$4,644,784</td><td class="num"><span class="down">-18.4%</span></td><td class="num">14,907</td><td class="num"><span class="down">-17.2%</span></td><td class="num">$311.58</td><td class="num">39.5%</td></tr>
+</tbody></table></div>
+<div class="tblwrap"><table><thead><tr><th>Region</th><th class="num">POS $ L52</th><th class="num">$ YoY</th><th class="num">Units</th><th class="num">Unit YoY</th><th class="num">ASP</th><th class="num">Share of &le;50&Prime;</th></tr></thead><tbody>
+<tr><td>CONUS</td><td class="num">$6,057,252</td><td class="num"><span class="down">-15.7%</span></td><td class="num">30,379</td><td class="num"><span class="down">-10.0%</span></td><td class="num">$199.39</td><td class="num">51.5%</td></tr>
+<tr><td>OCONUS</td><td class="num">$4,065,176</td><td class="num"><span class="down">-26.9%</span></td><td class="num">21,386</td><td class="num"><span class="down">-26.3%</span></td><td class="num">$190.09</td><td class="num">34.5%</td></tr>
+<tr><td>Exchange online</td><td class="num">$1,646,178</td><td class="num"><span class="down">-29.6%</span></td><td class="num">5,872</td><td class="num"><span class="down">-24.0%</span></td><td class="num">$280.34</td><td class="num">14.0%</td></tr>
+</tbody></table></div>
+<h3>Brand &times; region, top cells</h3><div class="tblwrap"><table><thead><tr><th>Brand &times; region</th><th class="num">POS $ L52</th><th class="num">$ YoY</th><th class="num">Units</th><th class="num">Unit YoY</th><th class="num">ASP</th></tr></thead><tbody>
+<tr><td>Samsung &middot; CONUS</td><td class="num">$2,055,729</td><td class="num"><span class="down">-1.5%</span></td><td class="num">9,661</td><td class="num"><span class="up">+23.2%</span></td><td class="num">$212.79</td></tr>
+<tr><td>LG &middot; CONUS</td><td class="num">$1,647,837</td><td class="num"><span class="up">+25.3%</span></td><td class="num">6,111</td><td class="num"><span class="up">+45.1%</span></td><td class="num">$269.65</td></tr>
+<tr><td>Samsung &middot; OCONUS</td><td class="num">$1,284,161</td><td class="num"><span class="up">+0.7%</span></td><td class="num">5,754</td><td class="num"><span class="up">+15.0%</span></td><td class="num">$223.18</td></tr>
+<tr><td>Element &middot; CONUS</td><td class="num">$993,188</td><td class="num"><span class="down">-25.7%</span></td><td class="num">7,678</td><td class="num"><span class="down">-15.5%</span></td><td class="num">$129.35</td></tr>
+<tr><td>LG &middot; OCONUS</td><td class="num">$926,103</td><td class="num"><span class="up">+2.8%</span></td><td class="num">3,548</td><td class="num"><span class="up">+17.3%</span></td><td class="num">$261.02</td></tr>
+<tr><td>Element &middot; OCONUS</td><td class="num">$882,841</td><td class="num"><span class="down">-42.8%</span></td><td class="num">7,383</td><td class="num"><span class="down">-37.2%</span></td><td class="num">$119.58</td></tr>
+<tr><td>TCL &middot; CONUS</td><td class="num">$807,882</td><td class="num"><span class="down">-37.9%</span></td><td class="num">4,526</td><td class="num"><span class="down">-39.2%</span></td><td class="num">$178.50</td></tr>
+<tr><td>Samsung &middot; Exchange online</td><td class="num">$707,861</td><td class="num"><span class="down">-34.5%</span></td><td class="num">2,397</td><td class="num"><span class="down">-14.6%</span></td><td class="num">$295.31</td></tr>
+<tr><td>LG &middot; Exchange online</td><td class="num">$621,170</td><td class="num"><span class="down">-5.2%</span></td><td class="num">1,744</td><td class="num"><span class="down">-0.8%</span></td><td class="num">$356.18</td></tr>
+<tr><td>TCL &middot; OCONUS</td><td class="num">$547,095</td><td class="num"><span class="down">-35.0%</span></td><td class="num">2,936</td><td class="num"><span class="down">-38.0%</span></td><td class="num">$186.34</td></tr>
+<tr><td>Hisense &middot; CONUS</td><td class="num">$458,187</td><td class="num"><span class="down">-42.3%</span></td><td class="num">2,132</td><td class="num"><span class="down">-43.4%</span></td><td class="num">$214.91</td></tr>
+<tr><td>Hisense &middot; OCONUS</td><td class="num">$365,907</td><td class="num"><span class="down">-48.7%</span></td><td class="num">1,623</td><td class="num"><span class="down">-50.2%</span></td><td class="num">$225.45</td></tr>
+</tbody></table></div>
+</div></section></div><div class="panel" role="tabpanel" id="panel-channel" aria-labelledby="tab-channel" hidden><section id="channel"><div class="wrap">
+<p class="eyebrow">Channel mix</p><h2>Online versus store, month by month</h2>
+<p class="lede">The working assumption in the category has been that ecommerce is about 35% of the pie. Over a full 52 weeks it is 27.5% of Dept 1097 and 29.1% of TV sets &mdash; and the two-year mix is remarkably stable, moving only from 27.4% to 27.5%.</p>
+<figure><div class="chtitle">Ecommerce share of retail dollars, by month</div>
+<p class="chsub">The 35% line is cleared only in November and December. Peak 41.5% (2024-12); trough 20.7% (2025-08).</p>
+<div class="legend">
+<span><i class="swatch" style="background:var(--b3)"></i>All TV sets</span>
+<span><i class="swatch" style="background:var(--s-roku)"></i>TVs 50&Prime; and under</span></div>
+<div class="chartbox"><svg viewBox="0 0 880 300" role="img" aria-label="ch"><line class="gl" x1="62" y1="266.0" x2="862" y2="266.0"/><text class="tk" x="53" y="269.5" text-anchor="end">0%</text><line class="gl" x1="62" y1="203.0" x2="862" y2="203.0"/><text class="tk" x="53" y="206.5" text-anchor="end">10%</text><line class="gl" x1="62" y1="140.0" x2="862" y2="140.0"/><text class="tk" x="53" y="143.5" text-anchor="end">20%</text><line class="gl" x1="62" y1="77.0" x2="862" y2="77.0"/><text class="tk" x="53" y="80.5" text-anchor="end">30%</text><line class="gl" x1="62" y1="14.0" x2="862" y2="14.0"/><text class="tk" x="53" y="17.5" text-anchor="end">40%</text><line class="ax" x1="62" y1="266.0" x2="862" y2="266.0"/><line x1="62" y1="45.5" x2="862" y2="45.5" stroke="var(--neg)" stroke-width="1.5" stroke-dasharray="5 4"/><text class="tk" x="858" y="38.5" text-anchor="end" fill="var(--neg)" font-weight="600">35% assumption</text><text class="tk" x="62.0" y="285.0" text-anchor="middle">24-09</text><text class="tk" x="131.6" y="285.0" text-anchor="middle">24-11</text><text class="tk" x="201.1" y="285.0" text-anchor="middle">25-01</text><text class="tk" x="270.7" y="285.0" text-anchor="middle">25-03</text><text class="tk" x="340.3" y="285.0" text-anchor="middle">25-05</text><text class="tk" x="409.8" y="285.0" text-anchor="middle">25-07</text><text class="tk" x="479.4" y="285.0" text-anchor="middle">25-09</text><text class="tk" x="549.0" y="285.0" text-anchor="middle">25-11</text><text class="tk" x="618.5" y="285.0" text-anchor="middle">26-01</text><text class="tk" x="688.1" y="285.0" text-anchor="middle">26-03</text><text class="tk" x="757.7" y="285.0" text-anchor="middle">26-05</text><text class="tk" x="862.0" y="285.0" text-anchor="middle">26-08</text><path d="M62.0,95.9 L96.8,90.3 L131.6,66.8 L166.3,4.4 L201.1,87.1 L235.9,71.1 L270.7,84.6 L305.5,134.3 L340.3,117.5 L375.0,132.8 L409.8,123.8 L444.6,135.3 L479.4,92.1 L514.2,134.8 L549.0,75.6 L583.7,22.0 L618.5,83.8 L653.3,91.4 L688.1,78.0 L722.9,88.4 L757.7,86.4 L792.4,97.9 L827.2,108.7 L862.0,109.8" fill="none" stroke="var(--b3)" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/><circle cx="862.0" cy="109.8" r="4.5" fill="var(--b3)" stroke="var(--panel)" stroke-width="2"/><path d="M62.0,177.3 L96.8,198.9 L131.6,163.3 L166.3,90.3 L201.1,160.6 L235.9,161.3 L270.7,165.5 L305.5,196.9 L340.3,192.7 L375.0,181.5 L409.8,173.5 L444.6,208.7 L479.4,180.2 L514.2,211.9 L549.0,168.3 L583.7,153.3 L618.5,185.6 L653.3,178.5 L688.1,165.5 L722.9,181.3 L757.7,171.4 L792.4,177.3 L827.2,187.1 L862.0,189.3" fill="none" stroke="var(--s-roku)" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/><circle cx="862.0" cy="189.3" r="4.5" fill="var(--s-roku)" stroke="var(--panel)" stroke-width="2"/><circle class="pt pt-ch-0" cx="62.0" cy="95.9" r="3" fill="var(--b3)" stroke="var(--panel)" stroke-width="1.5" opacity="0"/><circle class="pt pt-ch-0" cx="62.0" cy="177.3" r="3" fill="var(--s-roku)" stroke="var(--panel)" stroke-width="1.5" opacity="0"/><rect class="hoverzone hz-ch" data-i="0" x="44.6" y="14" width="34.8" height="252"/><circle class="pt pt-ch-1" cx="96.8" cy="90.3" r="3" fill="var(--b3)" stroke="var(--panel)" stroke-width="1.5" opacity="0"/><circle class="pt pt-ch-1" cx="96.8" cy="198.9" r="3" fill="var(--s-roku)" stroke="var(--panel)" stroke-width="1.5" opacity="0"/><rect class="hoverzone hz-ch" data-i="1" x="79.4" y="14" width="34.8" height="252"/><circle class="pt pt-ch-2" cx="131.6" cy="66.8" r="3" fill="var(--b3)" stroke="var(--panel)" stroke-width="1.5" opacity="0"/><circle class="pt pt-ch-2" cx="131.6" cy="163.3" r="3" fill="var(--s-roku)" stroke="var(--panel)" stroke-width="1.5" opacity="0"/><rect class="hoverzone hz-ch" data-i="2" x="114.2" y="14" width="34.8" height="252"/><circle class="pt pt-ch-3" cx="166.3" cy="4.4" r="3" fill="var(--b3)" stroke="var(--panel)" stroke-width="1.5" opacity="0"/><circle class="pt pt-ch-3" cx="166.3" cy="90.3" r="3" fill="var(--s-roku)" stroke="var(--panel)" stroke-width="1.5" opacity="0"/><rect class="hoverzone hz-ch" data-i="3" x="149.0" y="14" width="34.8" height="252"/><circle class="pt pt-ch-4" cx="201.1" cy="87.1" r="3" fill="var(--b3)" stroke="var(--panel)" stroke-width="1.5" opacity="0"/><circle class="pt pt-ch-4" cx="201.1" cy="160.6" r="3" fill="var(--s-roku)" stroke="var(--panel)" stroke-width="1.5" opacity="0"/><rect class="hoverzone hz-ch" data-i="4" x="183.7" y="14" width="34.8" height="252"/><circle class="pt pt-ch-5" cx="235.9" cy="71.1" r="3" fill="var(--b3)" stroke="var(--panel)" stroke-width="1.5" opacity="0"/><circle class="pt pt-ch-5" cx="235.9" cy="161.3" r="3" fill="var(--s-roku)" stroke="var(--panel)" stroke-width="1.5" opacity="0"/><rect class="hoverzone hz-ch" data-i="5" x="218.5" y="14" width="34.8" height="252"/><circle class="pt pt-ch-6" cx="270.7" cy="84.6" r="3" fill="var(--b3)" stroke="var(--panel)" stroke-width="1.5" opacity="0"/><circle class="pt pt-ch-6" cx="270.7" cy="165.5" r="3" fill="var(--s-roku)" stroke="var(--panel)" stroke-width="1.5" opacity="0"/><rect class="hoverzone hz-ch" data-i="6" x="253.3" y="14" width="34.8" height="252"/><circle class="pt pt-ch-7" cx="305.5" cy="134.3" r="3" fill="var(--b3)" stroke="var(--panel)" stroke-width="1.5" opacity="0"/><circle class="pt pt-ch-7" cx="305.5" cy="196.9" r="3" fill="var(--s-roku)" stroke="var(--panel)" stroke-width="1.5" opacity="0"/><rect class="hoverzone hz-ch" data-i="7" x="288.1" y="14" width="34.8" height="252"/><circle class="pt pt-ch-8" cx="340.3" cy="117.5" r="3" fill="var(--b3)" stroke="var(--panel)" stroke-width="1.5" opacity="0"/><circle class="pt pt-ch-8" cx="340.3" cy="192.7" r="3" fill="var(--s-roku)" stroke="var(--panel)" stroke-width="1.5" opacity="0"/><rect class="hoverzone hz-ch" data-i="8" x="322.9" y="14" width="34.8" height="252"/><circle class="pt pt-ch-9" cx="375.0" cy="132.8" r="3" fill="var(--b3)" stroke="var(--panel)" stroke-width="1.5" opacity="0"/><circle class="pt pt-ch-9" cx="375.0" cy="181.5" r="3" fill="var(--s-roku)" stroke="var(--panel)" stroke-width="1.5" opacity="0"/><rect class="hoverzone hz-ch" data-i="9" x="357.7" y="14" width="34.8" height="252"/><circle class="pt pt-ch-10" cx="409.8" cy="123.8" r="3" fill="var(--b3)" stroke="var(--panel)" stroke-width="1.5" opacity="0"/><circle class="pt pt-ch-10" cx="409.8" cy="173.5" r="3" fill="var(--s-roku)" stroke="var(--panel)" stroke-width="1.5" opacity="0"/><rect class="hoverzone hz-ch" data-i="10" x="392.4" y="14" width="34.8" height="252"/><circle class="pt pt-ch-11" cx="444.6" cy="135.3" r="3" fill="var(--b3)" stroke="var(--panel)" stroke-width="1.5" opacity="0"/><circle class="pt pt-ch-11" cx="444.6" cy="208.7" r="3" fill="var(--s-roku)" stroke="var(--panel)" stroke-width="1.5" opacity="0"/><rect class="hoverzone hz-ch" data-i="11" x="427.2" y="14" width="34.8" height="252"/><circle class="pt pt-ch-12" cx="479.4" cy="92.1" r="3" fill="var(--b3)" stroke="var(--panel)" stroke-width="1.5" opacity="0"/><circle class="pt pt-ch-12" cx="479.4" cy="180.2" r="3" fill="var(--s-roku)" stroke="var(--panel)" stroke-width="1.5" opacity="0"/><rect class="hoverzone hz-ch" data-i="12" x="462.0" y="14" width="34.8" height="252"/><circle class="pt pt-ch-13" cx="514.2" cy="134.8" r="3" fill="var(--b3)" stroke="var(--panel)" stroke-width="1.5" opacity="0"/><circle class="pt pt-ch-13" cx="514.2" cy="211.9" r="3" fill="var(--s-roku)" stroke="var(--panel)" stroke-width="1.5" opacity="0"/><rect class="hoverzone hz-ch" data-i="13" x="496.8" y="14" width="34.8" height="252"/><circle class="pt pt-ch-14" cx="549.0" cy="75.6" r="3" fill="var(--b3)" stroke="var(--panel)" stroke-width="1.5" opacity="0"/><circle class="pt pt-ch-14" cx="549.0" cy="168.3" r="3" fill="var(--s-roku)" stroke="var(--panel)" stroke-width="1.5" opacity="0"/><rect class="hoverzone hz-ch" data-i="14" x="531.6" y="14" width="34.8" height="252"/><circle class="pt pt-ch-15" cx="583.7" cy="22.0" r="3" fill="var(--b3)" stroke="var(--panel)" stroke-width="1.5" opacity="0"/><circle class="pt pt-ch-15" cx="583.7" cy="153.3" r="3" fill="var(--s-roku)" stroke="var(--panel)" stroke-width="1.5" opacity="0"/><rect class="hoverzone hz-ch" data-i="15" x="566.3" y="14" width="34.8" height="252"/><circle class="pt pt-ch-16" cx="618.5" cy="83.8" r="3" fill="var(--b3)" stroke="var(--panel)" stroke-width="1.5" opacity="0"/><circle class="pt pt-ch-16" cx="618.5" cy="185.6" r="3" fill="var(--s-roku)" stroke="var(--panel)" stroke-width="1.5" opacity="0"/><rect class="hoverzone hz-ch" data-i="16" x="601.1" y="14" width="34.8" height="252"/><circle class="pt pt-ch-17" cx="653.3" cy="91.4" r="3" fill="var(--b3)" stroke="var(--panel)" stroke-width="1.5" opacity="0"/><circle class="pt pt-ch-17" cx="653.3" cy="178.5" r="3" fill="var(--s-roku)" stroke="var(--panel)" stroke-width="1.5" opacity="0"/><rect class="hoverzone hz-ch" data-i="17" x="635.9" y="14" width="34.8" height="252"/><circle class="pt pt-ch-18" cx="688.1" cy="78.0" r="3" fill="var(--b3)" stroke="var(--panel)" stroke-width="1.5" opacity="0"/><circle class="pt pt-ch-18" cx="688.1" cy="165.5" r="3" fill="var(--s-roku)" stroke="var(--panel)" stroke-width="1.5" opacity="0"/><rect class="hoverzone hz-ch" data-i="18" x="670.7" y="14" width="34.8" height="252"/><circle class="pt pt-ch-19" cx="722.9" cy="88.4" r="3" fill="var(--b3)" stroke="var(--panel)" stroke-width="1.5" opacity="0"/><circle class="pt pt-ch-19" cx="722.9" cy="181.3" r="3" fill="var(--s-roku)" stroke="var(--panel)" stroke-width="1.5" opacity="0"/><rect class="hoverzone hz-ch" data-i="19" x="705.5" y="14" width="34.8" height="252"/><circle class="pt pt-ch-20" cx="757.7" cy="86.4" r="3" fill="var(--b3)" stroke="var(--panel)" stroke-width="1.5" opacity="0"/><circle class="pt pt-ch-20" cx="757.7" cy="171.4" r="3" fill="var(--s-roku)" stroke="var(--panel)" stroke-width="1.5" opacity="0"/><rect class="hoverzone hz-ch" data-i="20" x="740.3" y="14" width="34.8" height="252"/><circle class="pt pt-ch-21" cx="792.4" cy="97.9" r="3" fill="var(--b3)" stroke="var(--panel)" stroke-width="1.5" opacity="0"/><circle class="pt pt-ch-21" cx="792.4" cy="177.3" r="3" fill="var(--s-roku)" stroke="var(--panel)" stroke-width="1.5" opacity="0"/><rect class="hoverzone hz-ch" data-i="21" x="775.0" y="14" width="34.8" height="252"/><circle class="pt pt-ch-22" cx="827.2" cy="108.7" r="3" fill="var(--b3)" stroke="var(--panel)" stroke-width="1.5" opacity="0"/><circle class="pt pt-ch-22" cx="827.2" cy="187.1" r="3" fill="var(--s-roku)" stroke="var(--panel)" stroke-width="1.5" opacity="0"/><rect class="hoverzone hz-ch" data-i="22" x="809.8" y="14" width="34.8" height="252"/><circle class="pt pt-ch-23" cx="862.0" cy="109.8" r="3" fill="var(--b3)" stroke="var(--panel)" stroke-width="1.5" opacity="0"/><circle class="pt pt-ch-23" cx="862.0" cy="189.3" r="3" fill="var(--s-roku)" stroke="var(--panel)" stroke-width="1.5" opacity="0"/><rect class="hoverzone hz-ch" data-i="23" x="844.6" y="14" width="34.8" height="252"/><line class="ch-ch" x1="0" y1="14" x2="0" y2="266" stroke="var(--axis)" stroke-width="1" stroke-dasharray="3 3" opacity="0"/></svg><div class="tip" id="tip-ch"></div></div>
+<figcaption>Ecommerce = AAFES districts coded ECOM (B2C and B2B overhead, ECOM warehouses). Everything else is a physical store. Source: AAFES Atlas ITBIS, Dept 1097.</figcaption></figure>
+<div class="tblwrap"><table><thead><tr><th>Scope</th><th class="num">Online $ L52</th><th class="num">Store $ L52</th><th class="num">Total $ L52</th><th class="num">Online % L52</th><th class="num">Online % prior</th><th class="num">Total $ YoY</th></tr></thead><tbody>
+<tr><td>Dept 1097 total</td><td class="num">$20,737,780</td><td class="num">$54,682,031</td><td class="num">$75,419,812</td><td class="num">27.5%</td><td class="num">27.4%</td><td class="num"><span class="down">-12.9%</span></td></tr>
+<tr><td>All TV sets</td><td class="num">$20,298,998</td><td class="num">$49,539,903</td><td class="num">$69,838,901</td><td class="num">29.1%</td><td class="num">29.0%</td><td class="num"><span class="down">-12.0%</span></td></tr>
+<tr class="hi"><td>TVs 50&Prime; and under</td><td class="num">$1,646,178</td><td class="num">$10,122,429</td><td class="num">$11,768,607</td><td class="num">14.0%</td><td class="num">15.5%</td><td class="num"><span class="down">-22.0%</span></td></tr>
+<tr><td>TVs over 50&Prime;</td><td class="num">$18,652,820</td><td class="num">$39,417,474</td><td class="num">$58,070,294</td><td class="num">32.1%</td><td class="num">32.1%</td><td class="num"><span class="down">-9.7%</span></td></tr>
+</tbody></table></div>
+<h3>Monthly detail</h3><div class="tblwrap"><table><thead><tr><th>Month</th><th class="num">TV online $</th><th class="num">TV store $</th><th class="num">TV total $</th><th class="num">TV online %</th><th class="num">&le;50&Prime; online %</th></tr></thead><tbody>
+<tr><td>2024-09</td><td class="num">$1,605,205</td><td class="num">$4,341,641</td><td class="num">$5,946,846</td><td class="num">27.0%</td><td class="num">14.1%</td></tr>
+<tr><td>2024-10</td><td class="num">$1,512,761</td><td class="num">$3,912,657</td><td class="num">$5,425,418</td><td class="num">27.9%</td><td class="num">10.7%</td></tr>
+<tr><td>2024-11</td><td class="num">$4,622,344</td><td class="num">$9,997,343</td><td class="num">$14,619,686</td><td class="num">31.6%</td><td class="num">16.3%</td></tr>
+<tr><td>2024-12</td><td class="num">$4,941,238</td><td class="num">$6,957,334</td><td class="num">$11,898,571</td><td class="num">41.5%</td><td class="num">27.9%</td></tr>
+<tr><td>2025-01</td><td class="num">$1,421,383</td><td class="num">$3,584,403</td><td class="num">$5,005,786</td><td class="num">28.4%</td><td class="num">16.7%</td></tr>
+<tr><td>2025-02</td><td class="num">$1,720,949</td><td class="num">$3,841,691</td><td class="num">$5,562,640</td><td class="num">30.9%</td><td class="num">16.6%</td></tr>
+<tr><td>2025-03</td><td class="num">$1,789,446</td><td class="num">$4,424,674</td><td class="num">$6,214,121</td><td class="num">28.8%</td><td class="num">16.0%</td></tr>
+<tr><td>2025-04</td><td class="num">$850,667</td><td class="num">$3,217,153</td><td class="num">$4,067,820</td><td class="num">20.9%</td><td class="num">11.0%</td></tr>
+<tr><td>2025-05</td><td class="num">$1,276,452</td><td class="num">$4,138,555</td><td class="num">$5,415,007</td><td class="num">23.6%</td><td class="num">11.6%</td></tr>
+<tr><td>2025-06</td><td class="num">$897,248</td><td class="num">$3,347,207</td><td class="num">$4,244,455</td><td class="num">21.1%</td><td class="num">13.4%</td></tr>
+<tr><td>2025-07</td><td class="num">$1,057,025</td><td class="num">$3,626,173</td><td class="num">$4,683,198</td><td class="num">22.6%</td><td class="num">14.7%</td></tr>
+<tr><td>2025-08</td><td class="num">$1,310,509</td><td class="num">$5,008,646</td><td class="num">$6,319,155</td><td class="num">20.7%</td><td class="num">9.1%</td></tr>
+<tr><td>2025-09</td><td class="num">$1,456,087</td><td class="num">$3,819,249</td><td class="num">$5,275,336</td><td class="num">27.6%</td><td class="num">13.6%</td></tr>
+<tr><td>2025-10</td><td class="num">$812,134</td><td class="num">$3,087,965</td><td class="num">$3,900,098</td><td class="num">20.8%</td><td class="num">8.6%</td></tr>
+<tr><td>2025-11</td><td class="num">$3,633,467</td><td class="num">$8,387,080</td><td class="num">$12,020,547</td><td class="num">30.2%</td><td class="num">15.5%</td></tr>
+<tr><td>2025-12</td><td class="num">$3,574,490</td><td class="num">$5,653,207</td><td class="num">$9,227,697</td><td class="num">38.7%</td><td class="num">17.9%</td></tr>
+<tr><td>2026-01</td><td class="num">$1,686,403</td><td class="num">$4,145,958</td><td class="num">$5,832,362</td><td class="num">28.9%</td><td class="num">12.8%</td></tr>
+<tr><td>2026-02</td><td class="num">$1,353,803</td><td class="num">$3,532,114</td><td class="num">$4,885,917</td><td class="num">27.7%</td><td class="num">13.9%</td></tr>
+<tr><td>2026-03</td><td class="num">$1,356,470</td><td class="num">$3,189,355</td><td class="num">$4,545,825</td><td class="num">29.8%</td><td class="num">15.9%</td></tr>
+<tr><td>2026-04</td><td class="num">$1,130,037</td><td class="num">$2,878,807</td><td class="num">$4,008,844</td><td class="num">28.2%</td><td class="num">13.4%</td></tr>
+<tr><td>2026-05</td><td class="num">$1,563,900</td><td class="num">$3,920,615</td><td class="num">$5,484,515</td><td class="num">28.5%</td><td class="num">15.0%</td></tr>
+<tr><td>2026-06</td><td class="num">$1,284,440</td><td class="num">$3,529,763</td><td class="num">$4,814,203</td><td class="num">26.7%</td><td class="num">14.1%</td></tr>
+<tr><td>2026-07</td><td class="num">$1,109,336</td><td class="num">$3,334,982</td><td class="num">$4,444,318</td><td class="num">25.0%</td><td class="num">12.5%</td></tr>
+<tr><td>2026-08</td><td class="num">$1,338,430</td><td class="num">$4,060,809</td><td class="num">$5,399,239</td><td class="num">24.8%</td><td class="num">12.2%</td></tr>
+</tbody></table></div>
+<div class="callout"><p><strong>Two things follow.</strong> First, the 35% figure describes the holiday peak, not the year &mdash; it is a seasonal spike, and the annual mix has not moved in two years. Second, and more useful for assortment planning: the small-screen tier is the <em>least</em> online-driven part of the department at 14.0%, down from 15.5%, while sets over 50&Prime; run 32.1%. Big screens go in the cart online; small screens get picked up in the store. A small-screen strategy built around exchangeonline.com is aiming at the thinnest slice of a shrinking tier.</p></div>
+</div></section></div><div class="panel" role="tabpanel" id="panel-actions" aria-labelledby="tab-actions" hidden><section id="next"><div class="wrap">
+<p class="eyebrow">Implications</p><h2>Where we would put the effort</h2>
+<div class="findings">
+<div class="finding"><div class="fnum">1</div><div><h4>Defend and press the player win.</h4><p>Roku is the only one of the three growing, it has crossed Amazon in the last two months, and it is doing it on rising ASP. The refreshed 4776xxx line is carrying it. The near-term ask of AAFES is straightforward: protect facings on the growing SKUs, and get the Streambar SE and Ultra 4850R into more of the 156 doors already carrying Roku.</p></div></div>
+<div class="finding"><div class="fnum">2</div><div><h4>Treat OCONUS as the core, not the outpost.</h4><p>40% of Roku player dollars come from overseas and deployed locations, and on-hand inventory is concentrated in Qatar, Jordan, Kuwait, Germany, Okinawa and Korea. That is a defensible position against a competitor with a broader CONUS retail footprint, and it is where the product solves a real problem.</p></div></div>
+<div class="finding"><div class="fnum">3</div><div><h4>Do not build the TV OS case on the online channel.</h4><p>The premise that small-screen sells online does not hold here: 14.0% online and falling. If Roku wants TV OS placement at AAFES, the argument has to be won on the store planogram, in the sizes and price points AAFES actually turns.</p></div></div>
+<div class="finding"><div class="fnum">4</div><div><h4>If TV OS is the goal, the Hisense route is the proven one.</h4><p>Amazon put $125,224 on the wall in one year through a Hisense QD6 line, not through a value-brand licensee. Westinghouse &mdash; Roku's carrier at AAFES &mdash; fell 72% and is now 0.15% of TV dollars. A Roku OS re-entry needs a partner AAFES already buys in volume.</p></div></div>
+<div class="finding"><div class="fnum">5</div><div><h4>Size the ask honestly.</h4><p>The &le;50&Prime; tier is $11.77M and shrinking 22% a year, with Samsung and LG taking share <em>within</em> it. A credible Roku OS target is a point or two of that tier, not the 15% framing from the July draft. The bigger dollar prize is defending the $618K player business, which is growing.</p></div></div>
+</div></div></section></div><div class="panel" role="tabpanel" id="panel-method" aria-labelledby="tab-method" hidden><section id="method"><div class="wrap">
+<p class="eyebrow">Methodology</p><h2>How these numbers were built</h2>
+<dl class="method">
+<dt>Source</dt><dd>AAFES Atlas Inventory Trend Report (ITBIS), Dept 1097 &ldquo;TV Video&rdquo;, all stores, all suppliers. Extract generated Dept 1097 TV - Sept 1, 2026.xlsx &mdash; 59,841 item &times; location rows &times; 106 fiscal weeks. Metrics: Units, Sales $, EoP Store On Hand Units, EoP Store Extended Retail $.</dd>
+<dt>Periods</dt><dd>Rolling 52 weeks W/E 2025-09-06 to 2026-08-29, against W/E 2024-09-07 to 2025-08-30. On-hand is a point-in-time balance as of 2026-08-29.</dd>
+<dt>On-hand treatment</dt><dd>Raw on-hand nets negative because the <em>ECOMM DROP SHIP FULF</em> pseudo-location carries a &minus;6,251 unit balance for vendor drop-ship, where AAFES owns no inventory. Drop-ship and returns locations are excluded from all on-hand figures. Note the feed reports <em>store</em> on hand only, so distribution-centre and ecommerce inventory is not visible.</dd>
+<dt>Brand and platform assignment</dt><dd>Assigned from the AAFES item description. Streaming players are separated from TV sets that merely run the platform. Screen size is parsed from the description and, where absent, from the model number (Samsung UN/QN/MRN, LG OLED/UA/UT, Sony XR/KD, Hisense and TCL series codes). 92.5% of department dollars resolve to a TV set with a parsed size; the remainder is mounts, cables, surge, projectors and streaming devices.</dd>
+<dt>Region</dt><dd>CONUS, OCONUS and Exchange online derived from the AAFES district code &mdash; four-digit districts beginning 5, 6, 7 or 9 are OCONUS (Puerto Rico, Pacific, Europe/Middle East, Alaska); districts described as ECOM are online. Hawaii and Alaska are counted OCONUS. The JBMDL Dover / Pituffik rollup is counted CONUS despite containing a Greenland location.</dd>
+<dt>Known limits</dt><dd>TV operating system is only stated for some items; TCL, Hisense and Element sets whose descriptions name no platform are reported as unknown rather than assigned one. Apple TV is not carried in Dept 1097 and is absent from all share calculations. Figures are AAFES only &mdash; NEX, MCX, CGX and VCS are not in this extract.</dd>
+<dt>Verification</dt><dd>Department totals, unit totals, ecommerce dollars and all three brand totals were recomputed directly from the source workbook by an independent script and reconcile exactly.</dd>
+</dl>
+</div></section></div><footer class="sitefoot"><div class="wrap"><p style="max-width:none">Prepared by Military Sales &amp; Service for Roku. Contains AAFES point-of-sale and inventory data that is not public; access is restricted. Analysis and figures owned and reviewed by Jon Barber, VP of Marketing, Military Sales &amp; Service Co.</p></div></footer>
+<script>
+const CHARTS = {"pm":{"labels":["2024-09","2024-10","2024-11","2024-12","2025-01","2025-02","2025-03","2025-04","2025-05","2025-06","2025-07","2025-08","2025-09","2025-10","2025-11","2025-12","2026-01","2026-02","2026-03","2026-04","2026-05","2026-06","2026-07","2026-08"],"series":[{"n":"Roku","c":"--s-roku","v":[37793,40325,57306,47922,39858,43254,56444,43692,51933,40799,43601,52742,42406,39948,60479,57307,62442,52981,53770,48698,52005,48055,46300,53997]},{"n":"Amazon Fire TV","c":"--s-amzn","v":[97010,91576,100664,72782,31543,41790,71833,56564,71626,60115,59746,76575,55114,48238,53378,80276,99661,76543,62665,58255,77104,61674,45912,43673]},{"n":"Google","c":"--s-goog","v":[14353,15818,21921,14590,9670,8302,8221,4486,11691,9498,8202,10613,9090,6629,13529,9227,8599,5700,7604,7024,8818,8102,7842,9808]}],"fmt":"money"},"ch":{"labels":["2024-09","2024-10","2024-11","2024-12","2025-01","2025-02","2025-03","2025-04","2025-05","2025-06","2025-07","2025-08","2025-09","2025-10","2025-11","2025-12","2026-01","2026-02","2026-03","2026-04","2026-05","2026-06","2026-07","2026-08"],"series":[{"n":"All TV sets","c":"--b3","v":[27.0,27.9,31.6,41.5,28.4,30.9,28.8,20.9,23.6,21.1,22.6,20.7,27.6,20.8,30.2,38.7,28.9,27.7,29.8,28.2,28.5,26.7,25.0,24.8]},{"n":"TVs \u226450\u2033","c":"--s-roku","v":[14.1,10.7,16.3,27.9,16.7,16.6,16.0,11.0,11.6,13.4,14.7,9.1,13.6,8.6,15.5,17.9,12.8,13.9,15.9,13.4,15.0,14.1,12.5,12.2]}],"fmt":"pct"}};
+function fmtv(v,k){ if(k==='pct') return v.toFixed(1)+'%';
+  const a=Math.abs(v); const s=v<0?'-':'';
+  if(a>=1e6) return s+'$'+(a/1e6).toFixed(2)+'M';
+  return s+'$'+a.toLocaleString('en-US',{maximumFractionDigits:0}); }
+Object.keys(CHARTS).forEach(function(cid){
+  const cfg=CHARTS[cid];
+  const tip=document.getElementById('tip-'+cid); if(!tip) return;
+  const box=tip.parentElement;
+  const zones=box.querySelectorAll('.hz-'+cid);
+  const cross=box.querySelector('.ch-'+cid);
+  function show(i,ev){
+    let h='<div class="tt">'+cfg.labels[i]+'</div>';
+    cfg.series.forEach(function(s){
+      h+='<div class="tr"><span><i class="swatch" style="background:var('+s.c+')"></i>'+s.n+'</span><b>'+fmtv(s.v[i],cfg.fmt)+'</b></div>'; });
+    tip.innerHTML=h; tip.style.opacity=1;
+    const br=box.getBoundingClientRect();
+    let x=ev.clientX-br.left+14, y=ev.clientY-br.top-10;
+    if(x+tip.offsetWidth>br.width) x=ev.clientX-br.left-tip.offsetWidth-14;
+    if(y<0) y=0;
+    tip.style.left=x+'px'; tip.style.top=y+'px';
+    box.querySelectorAll('.pt-'+cid+'-'+i).forEach(function(p){p.setAttribute('opacity','1');});
+    const z=zones[i]; if(cross&&z){ const cx=parseFloat(z.getAttribute('x'))+parseFloat(z.getAttribute('width'))/2;
+      cross.setAttribute('x1',cx); cross.setAttribute('x2',cx); cross.setAttribute('opacity','1'); }
+  }
+  function hide(){ tip.style.opacity=0; if(cross) cross.setAttribute('opacity','0');
+    box.querySelectorAll('.pt').forEach(function(p){p.setAttribute('opacity','0');}); }
+  zones.forEach(function(z,i){
+    z.addEventListener('mousemove',function(e){show(i,e);});
+    z.addEventListener('mouseenter',function(e){show(i,e);});
+  });
+  box.addEventListener('mouseleave',hide);
+});
+</script>
+<script>
+(function(){
+  var btns=[].slice.call(document.querySelectorAll('nav.tabs button'));
+  function show(k,push){
+    btns.forEach(function(b){
+      var on=b.dataset.tab===k;
+      b.setAttribute('aria-selected',on?'true':'false');
+      document.getElementById('panel-'+b.dataset.tab).hidden=!on;
+    });
+    if(push && location.hash.slice(1)!==k) history.replaceState(null,'','#'+k);
+    window.scrollTo({top:0,behavior:'instant'});
+  }
+  btns.forEach(function(b){b.addEventListener('click',function(){show(b.dataset.tab,true);});});
+  var h=location.hash.slice(1);
+  if(h && document.getElementById('panel-'+h)) show(h,false);
+})();
+</script>
+</body>
+</html>
