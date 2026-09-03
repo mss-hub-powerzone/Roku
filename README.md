@@ -3,6 +3,12 @@
 Static dashboard for the Roku / Amazon Fire TV / Google streaming and TV-OS position in the
 AAFES exchange, built by Military Sales & Service. Single self-contained page, no build step.
 
+Prepared for **Harris Atran**, Roku (hatran@roku.com). MSS point of contact for the Roku account
+is **Jon Barber**, VP of Marketing (jon.barber@mssco.com). Both are shown in the page footer.
+
+The page renders **dark by default**; a Light / Dark toggle sits in the tab bar and the choice is
+remembered per browser in `localStorage` under `roku-dash-theme`.
+
 ## Contents
 
 | Path | What it is |
