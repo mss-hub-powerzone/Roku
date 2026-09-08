@@ -48,33 +48,58 @@ Figures are AAFES only. NEX, MCX, CGX and VCS are not in this extract.
 Department totals, unit totals, ecommerce dollars and all three brand totals were recomputed
 directly from the source workbook by an independent script and reconcile exactly.
 
-## Deploying to Cloudflare Pages
+## Deploying
 
-No build command and no build output directory — this is a plain static site.
+No build step — this is a plain static page.
+
+This is served by a **Cloudflare Worker** with static assets, named `roku` — *not* a Pages
+project, and **not** connected to Git. Pushing to GitHub does not deploy it. Deploy explicitly,
+from a directory holding just `index.html` and `_headers`:
 
 ```
-Framework preset:        None
-Build command:           (leave empty)
-Build output directory:  /
+npx wrangler deploy --name roku --assets <dir> --compatibility-date 2026-09-03
 ```
 
-Connect the repository in the Cloudflare dashboard (Workers & Pages → Create → Pages → Connect to
-Git) and it will publish on every push to the default branch.
+`npx wrangler deployments list --name roku` shows what is live; `npx wrangler rollback --name roku`
+reverts. Do **not** use `wrangler versions upload` to stage a preview: a preview hostname is not
+covered by the Access application below, and this page carries non-public AAFES data.
 
-## Restricting access (not yet applied)
+## The PowerZone tab
 
-The dashboard carries non-public AAFES POS and inventory data. Before sharing the URL, put a
-Cloudflare Zero Trust Access application in front of the Pages project:
+The **PowerZone** tab is shared with the Apple Command Center and is deliberately identical on
+both — the same nine AAFES departments, the same fixed department colours, the same footnote. It
+is **not maintained in this repo**. The component, the weekly payload and the injector live in
+the `aafes-weekly-recap` repo under `PowerZone Tab Handoff`, and everything between the
+`PZ:BEGIN` / `PZ:END` markers in `index.html` is generated. Edit the component, then re-run:
 
-1. Zero Trust → Access → Applications → **Add an application** → Self-hosted
-2. Application domain: the Pages project hostname (and any custom domain)
-3. Add a policy: **Action** Allow, **Include** → *Emails ending in* → `@roku.com`
-4. Add a second Include rule in the same policy: *Emails ending in* → `@mssco.com`
-5. Identity provider: One-time PIN is sufficient if neither domain is federated to your Zero Trust
-   instance; otherwise use the configured IdP.
-6. Save, then confirm in an incognito window that an unlisted address is refused.
+```
+python "PowerZone Tab Handoff/inject_powerzone_tab.py"
+```
 
-Until that policy exists, treat the deployment URL as sensitive and do not circulate it.
+It is idempotent, so a second run is a no-op; `--check` reports without writing.
+
+Those figures are AAFES **chain-wide** across every door, not store 1010 — the source workbook's
+Overview sheet records `Stores: All`. The footnote on the tab says so; do not reword it without
+checking that week's Overview sheet.
+
+## Access
+
+**Applied.** A Cloudflare Zero Trust Access application, `roku - Cloudflare Workers`, has gated
+this Worker since 1 September 2026, with two allow policies:
+
+| Policy | Include |
+|---|---|
+| Email domain: roku.com | `@roku.com` |
+| Email domain: mssco.com | `@mssco.com` |
+
+Session 24h. Verify at any time — an unauthenticated request must answer 302 to
+`mss-hub-pages.cloudflareaccess.com`, never 200:
+
+```
+curl -s -o /dev/null -w "%{http_code} %{redirect_url}\n" -I https://roku.jon-barber.workers.dev
+```
+
+Confirmed 302 on 8 September 2026, after the PowerZone deployment.
 
 ---
 
